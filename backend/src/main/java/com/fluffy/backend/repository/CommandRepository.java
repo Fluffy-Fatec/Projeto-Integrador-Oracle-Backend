@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.fluffy.backend.entity.Command;
 
 @Repository
-public interface CommandRepository extends JpaRepository <Command, Integer> {
+public interface CommandRepository extends JpaRepository<Command, Integer> {
 
 }

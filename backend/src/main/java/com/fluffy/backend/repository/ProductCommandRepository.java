@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.fluffy.backend.entity.ProductCommand;
 
 @Repository
-public interface ProductCommandRepository extends JpaRepository <ProductCommand, Integer> {
+public interface ProductCommandRepository extends JpaRepository<ProductCommand, Integer> {
 
 }
