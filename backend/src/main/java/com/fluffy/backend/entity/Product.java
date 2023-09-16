@@ -14,11 +14,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PRODUCT")
+@Table(name = "PRODUCTS")
 public class Product {
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product")
+   // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product")
    // @SequenceGenerator(name = "seq_product", sequenceName = "SEQ_PRODUCT", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(name = "product_id")
     private Long idProduct;
     

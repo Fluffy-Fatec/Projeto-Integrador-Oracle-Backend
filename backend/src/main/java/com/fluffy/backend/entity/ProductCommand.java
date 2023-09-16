@@ -32,7 +32,6 @@ public class ProductCommand {
 	private BigDecimal pcQuantity;
 
 	@Column(name = "PC_DATETIME_ORDER")
-	@Temporal(TemporalType.TIMESTAMP)
 	private Timestamp pcDatetimeOrder;
 
 	@ManyToOne

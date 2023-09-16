@@ -17,8 +17,9 @@ public class Command {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "command_seq")
-    @SequenceGenerator(name = "command_seq", sequenceName = "COMMANDS_SEQ", allocationSize = 1)
+   // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "command_seq")
+   // @SequenceGenerator(name = "command_seq", sequenceName = "COMMANDS_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(name = "COMMAND_ID")
     private Integer commandId;
 
