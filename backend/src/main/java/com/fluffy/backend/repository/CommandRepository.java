@@ -8,4 +8,6 @@ import com.fluffy.backend.entity.Command;
 @Repository
 public interface CommandRepository extends JpaRepository<Command, Integer> {
 
+	Command findByCommandNumber(int i);
+
 }
