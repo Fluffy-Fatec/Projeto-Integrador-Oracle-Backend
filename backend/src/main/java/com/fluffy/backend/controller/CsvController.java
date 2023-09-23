@@ -1,8 +1,11 @@
 package com.fluffy.backend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,8 +16,7 @@ import com.fluffy.backend.DTO.CsvData;
 import com.fluffy.backend.service.CsvService;
 import com.fluffy.backend.util.CsvUtils;
 
-import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/csv")
 public class CsvController {

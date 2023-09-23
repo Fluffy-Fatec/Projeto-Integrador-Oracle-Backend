@@ -54,9 +54,9 @@ public class CsvServiceTest {
         csvData.setProductType("Fritos");
         csvData.setPcQuantity(BigDecimal.valueOf(1.0));
         csvData.setPcMeasurement("Kg");
-        csvData.setPcTurn(1);
         csvData.setCommandNumber(123);
         csvData.setPcDatetimeOrder(null);
+      
 
         Product product = new Product();
         product.setName(csvData.getProductName());
@@ -65,6 +65,8 @@ public class CsvServiceTest {
 
         Command command = new Command();
         command.setCommandNumber(csvData.getCommandNumber());
+        csvData.setCommandDateTime(null);
+        csvData.setCommandValue(BigDecimal.valueOf(1.0));
         
         // Configuração dos comportamentos esperados
         when(productRepository.saveAndFlush(any(Product.class))).thenReturn(product);

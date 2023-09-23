@@ -31,9 +31,11 @@ public class CsvUtils {
 				csvData.setProductType(line[2]);
 				csvData.setPcQuantity(new BigDecimal(line[3]));
 				csvData.setPcMeasurement(line[4]);
-				csvData.setPcTurn(Integer.parseInt(line[5]));
-				csvData.setCommandNumber(Integer.parseInt(line[6]));
-				csvData.setPcDatetimeOrder(Timestamp.valueOf(line[7]));
+//				csvData.setPcTurn(Integer.parseInt(line[5]));
+				csvData.setCommandNumber(Integer.parseInt(line[5]));
+				csvData.setPcDatetimeOrder(Timestamp.valueOf(line[6]));
+				csvData.setCommandDateTime(Timestamp.valueOf(line[7]));
+				csvData.setCommandValue(new BigDecimal(line[8]));
 				csvDataList.add(csvData);
 			}
 		}

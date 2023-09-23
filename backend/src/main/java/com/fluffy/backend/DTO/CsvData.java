@@ -14,8 +14,8 @@ public class CsvData {
 	private String productType;
 	private BigDecimal pcQuantity;
 	private String pcMeasurement;
-	private Integer pcTurn;
 	private Integer commandNumber;
 	private Timestamp pcDatetimeOrder;
-
+	private Timestamp commandDateTime;
+	private BigDecimal commandValue;
 }
