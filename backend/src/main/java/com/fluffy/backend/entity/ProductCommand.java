@@ -40,8 +40,8 @@ public class ProductCommand {
 	@JoinColumn(name = "COMMAND_ID")
 	private Command command;
 
-	@Column(name = "PC_TURN")
-	private Integer pcTurn;
+//	@Column(name = "PC_TURN")
+//	private Integer pcTurn;
 
 	@Column(name = "PC_MEASUREMENT")
 	private String pcMeasurement;

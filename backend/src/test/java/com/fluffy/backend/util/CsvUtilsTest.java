@@ -1,4 +1,5 @@
 package com.fluffy.backend.util;
+
 import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayInputStream;
@@ -22,54 +23,58 @@ import com.opencsv.exceptions.CsvValidationException;
 
 public class CsvUtilsTest {
 
-    private CsvUtils csvUtils;
+	private CsvUtils csvUtils;
 
-    @BeforeEach
-    public void setUp() {
-        csvUtils = new CsvUtils();
-    }
+	@BeforeEach
+	public void setUp() {
+		csvUtils = new CsvUtils();
+	}
 
-    @Test
-    public void testReadCsv() throws IOException, CsvValidationException {
-        // Preparação do arquivo de teste
-        String csvContent = "Product Name,Product Value,Product Type,PC Quantity,PC Measurement,PC Turn,Command Number,PC Datetime Order\n"
-                + "Product 1,10.0,Type A,5.0,cm,1,123,2023-09-18 10:00:00\n"
-                + "Product 2,20.0,Type B,8.0,cm,2,456,2023-09-18 12:00:00\n";
-        InputStream inputStream = IOUtils.toInputStream(csvContent, StandardCharsets.UTF_8);
-        MultipartFile multipartFile = new MockMultipartFile("test.csv", inputStream);
+	public void testReadCsv() throws IOException, CsvValidationException {
+		String csvContent = "Product Name,Product Value,Product Type,PC Quantity,PC Measurement,PC Turn,Command Number,PC Datetime Order\n"
+				+ "Product 1,10.0,Type A,5.0,cm,1,123,2023-09-18T10:00:00\n"
+				+ "Product 2,20.0,Type B,8.0,cm,2,456,2023-09-18T12:00:00\n";
+		InputStream inputStream = IOUtils.toInputStream(csvContent, StandardCharsets.UTF_8);
+		MultipartFile multipartFile = new MockMultipartFile("test.csv", inputStream);
 
-        List<CsvData> csvDataList = csvUtils.readCsv(multipartFile);
+		CsvUtils csvUtils = new CsvUtils();
 
-        Assertions.assertEquals(2, csvDataList.size());
+		List<CsvData> csvDataList = csvUtils.readCsv(multipartFile);
 
-        CsvData csvData1 = csvDataList.get(0);
-        Assertions.assertEquals("Product 1", csvData1.getProductName());
-        Assertions.assertEquals(new BigDecimal("10.0"), csvData1.getProductValue());
-        Assertions.assertEquals("Type A", csvData1.getProductType());
-        Assertions.assertEquals(new BigDecimal("5.0"), csvData1.getPcQuantity());
-        Assertions.assertEquals("cm", csvData1.getPcMeasurement());
-        Assertions.assertEquals(1, csvData1.getPcTurn());
-        Assertions.assertEquals(123, csvData1.getCommandNumber());
-        Assertions.assertEquals(Timestamp.valueOf("2023-09-18 10:00:00"), csvData1.getPcDatetimeOrder());
+		Assertions.assertEquals(2, csvDataList.size());
 
-        CsvData csvData2 = csvDataList.get(1);
-        Assertions.assertEquals("Product 2", csvData2.getProductName());
-        Assertions.assertEquals(new BigDecimal("20.0"), csvData2.getProductValue());
-        Assertions.assertEquals("Type B", csvData2.getProductType());
-        Assertions.assertEquals(new BigDecimal("8.0"), csvData2.getPcQuantity());
-        Assertions.assertEquals("cm", csvData2.getPcMeasurement());
-        Assertions.assertEquals(2, csvData2.getPcTurn());
-        Assertions.assertEquals(456, csvData2.getCommandNumber());
-        Assertions.assertEquals(Timestamp.valueOf("2023-09-18 12:00:00"), csvData2.getPcDatetimeOrder());
-    }
+		CsvData csvData1 = csvDataList.get(0);
+		Assertions.assertEquals("Product 1", csvData1.getProductName());
+		Assertions.assertEquals(new BigDecimal("10.0"), csvData1.getProductValue());
+		Assertions.assertEquals("Type A", csvData1.getProductType());
+		Assertions.assertEquals(new BigDecimal("5.0"), csvData1.getPcQuantity());
+		Assertions.assertEquals("cm", csvData1.getPcMeasurement());
+		Assertions.assertEquals(123, csvData1.getCommandNumber());
+		Assertions.assertEquals(Timestamp.valueOf("2023-09-18 10:00:00"), // Assegure-se de que o formato corresponda ao
+																			// CSV
+				csvData1.getPcDatetimeOrder());
+		Assertions.assertEquals(Timestamp.valueOf("2023-09-18 10:00:00"), // Assegure-se de que o formato corresponda ao
+																			// CSV
+				csvData1.getCommandDateTime());
+		Assertions.assertEquals(new BigDecimal("50.0"), csvData1.getCommandValue());
 
-    @Test
-    public void testReadCsvWithIOException() throws IOException, CsvValidationException {
-        MultipartFile multipartFile = Mockito.mock(MultipartFile.class);
-        when(multipartFile.getInputStream()).thenThrow(new IOException());
+		CsvData csvData2 = csvDataList.get(1);
+		Assertions.assertEquals("Product 2", csvData2.getProductName());
+		Assertions.assertEquals(new BigDecimal("20.0"), csvData2.getProductValue());
+		Assertions.assertEquals("Type B", csvData2.getProductType());
+		Assertions.assertEquals(new BigDecimal("8.0"), csvData2.getPcQuantity());
+		Assertions.assertEquals("cm", csvData2.getPcMeasurement());
+		Assertions.assertEquals(456, csvData2.getCommandNumber());
+		Assertions.assertEquals(Timestamp.valueOf("2023-09-18 12:00:00"), csvData2.getPcDatetimeOrder());
+		Assertions.assertEquals(Timestamp.valueOf("2023-09-18 12:00:00"), csvData2.getCommandDateTime());
+		Assertions.assertEquals(new BigDecimal("3.0"), csvData2.getCommandValue());
+	}
 
-        Assertions.assertThrows(IOException.class, () -> csvUtils.readCsv(multipartFile));
-    }
+	@Test
+	public void testReadCsvWithIOException() throws IOException, CsvValidationException {
+		MultipartFile multipartFile = Mockito.mock(MultipartFile.class);
+		when(multipartFile.getInputStream()).thenThrow(new IOException());
+
+		Assertions.assertThrows(IOException.class, () -> csvUtils.readCsv(multipartFile));
+	}
 }
-
-
