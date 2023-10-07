@@ -34,13 +34,19 @@ public class Suppliers {
     private String cnpj;
 
     @Column(name = "phone_01", nullable = false)
-    private Long phone01;
-
-    @Column(name = "phone_02", nullable = false)
-    private Long phone02;
+    private Long phone;
 
     @Column(name = "address", nullable = false)
     private String address;
+    
+    @Column(name = "city", nullable = false)
+    private String city;
+    
+    @Column(name = "state", nullable = false)
+    private String state;
+    
+    @Column(name = "status")
+    private String status;
     
 	@ManyToOne
 	@JoinColumn(name = "pm_id")

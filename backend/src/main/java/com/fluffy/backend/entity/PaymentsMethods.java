@@ -23,5 +23,8 @@ public class PaymentsMethods {
 	
 	@Column(name = "pm_name")
 	private String name;
+	
+	@Column(name = "pay_day")
+	private String payDay;
 
 }
