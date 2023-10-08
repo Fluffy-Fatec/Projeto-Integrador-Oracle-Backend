@@ -87,6 +87,10 @@
 			<column name="state" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
+			<column name="status" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			
 			<column name="payment_method_id" type="NUMBER">
 				<constraints nullable="false" />
 			</column>
