@@ -1,5 +1,6 @@
 package com.fluffy.backend.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,34 +22,34 @@ public class Suppliers {
     @Column(name = "supplier_id")
     private Long IdSupplier;
 
-    @Column(name = "supplier_name", nullable = false)
+    @Column(name = "supplier_name")
     private String name;
 
-    @Column(name = "supplier_segment", nullable = false)
+    @Column(name = "supplier_segment")
     private String segment;
 
-    @Column(name = "delivery_forecast", nullable = false)
+    @Column(name = "delivery_forecast")
     private String deliveryForecast;
 
-    @Column(name = "cnpj", nullable = false, unique = true)
+    @Column(name = "cnpj")
     private String cnpj;
 
-    @Column(name = "phone_01", nullable = false)
+    @Column(name = "phone_01")
     private Long phone;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
     
-    @Column(name = "city", nullable = false)
+    @Column(name = "city")
     private String city;
     
-    @Column(name = "state", nullable = false)
+    @Column(name = "state")
     private String state;
     
     @Column(name = "status")
     private String status;
     
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name = "pm_id")
 	private PaymentsMethods paymentsMethods;
 }
