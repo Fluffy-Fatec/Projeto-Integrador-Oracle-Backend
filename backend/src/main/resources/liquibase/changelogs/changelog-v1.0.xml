@@ -201,6 +201,7 @@
 			</column>
 		</createTable>
 	</changeSet>
+>>>>
 
 	<!-- Chaves estrangeiras -->
 
