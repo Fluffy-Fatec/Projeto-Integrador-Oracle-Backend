@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,6 @@ import com.fluffy.backend.entity.PaymentsMethods;
 import com.fluffy.backend.entity.Suppliers;
 import com.fluffy.backend.service.SuppliersService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @CrossOrigin
 @RestController
@@ -32,6 +32,7 @@ public class SuppliersController {
 	@PostMapping
 	public ResponseEntity<String> createSupplierWithPaymentsMethods(@RequestBody Suppliers supplier,
 			@RequestBody PaymentsMethods paymentsMethods) {
+		
 		suppliersService.saveSupplierWithPaymentsMethods(supplier, paymentsMethods);
 		return ResponseEntity.ok("Fornecedor e Método de Pagamento salvos com sucesso.");
 	}

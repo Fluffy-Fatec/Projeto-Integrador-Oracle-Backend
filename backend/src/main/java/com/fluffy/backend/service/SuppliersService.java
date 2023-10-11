@@ -22,7 +22,7 @@ public class SuppliersService {
 
 	public void saveSupplierWithPaymentsMethods(Suppliers supplier, PaymentsMethods paymentsMethods) {
 		PaymentsMethods savedPaymentsMethods = paymentsMethodsRepository.save(paymentsMethods);
-
+		
 		supplier.setPaymentsMethods(savedPaymentsMethods);
 
 		suppliersRepository.save(supplier);

@@ -45,7 +45,7 @@
 	<!-- Tabela: Payments_methods -->
 	<changeSet id="createPaymentsMethodsTable" author="luiz_borges">
 		<createTable tableName="Payments_methods">
-			<column name="pm_id" type="NUMBER">
+			<column name="pm_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="pm_name" type="VARCHAR(255)">
@@ -60,7 +60,7 @@
 	<!-- Tabela: Suppliers -->
 	<changeSet id="createSuppliersTable" author="luiz_borges">
 		<createTable tableName="Suppliers">
-			<column name="supplier_id" type="NUMBER">
+			<column name="supplier_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="supplier_name" type="VARCHAR(255)">
@@ -90,7 +90,7 @@
 			<column name="status" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
-			
+
 			<column name="payment_method_id" type="NUMBER">
 				<constraints nullable="false" />
 			</column>
@@ -284,57 +284,51 @@
 
 	<!-- Sequências -->
 
-	<!-- Create Sequence COMMANDS_SEQ -->
+	<!-- Create Sequence COMMANDS_SEQ 
 	<changeSet id="createSequenceCommandsSeq" author="luiz_borges">
 		<createSequence sequenceName="COMMANDS_SEQ" incrementBy="1"
 			startValue="1" />
-	</changeSet>
-	<!-- Create Sequence PRODUCT_COMMAND_SEQ -->
+	</changeSet> 
+	 Create Sequence PRODUCT_COMMAND_SEQ 
 	<changeSet id="createSequenceProductCommandSeq" author="luiz_borges">
 		<createSequence sequenceName="PRODUCT_COMMAND_SEQ" incrementBy="1"
 			startValue="1" />
 	</changeSet>
-	<!-- Create Sequence PRODUCTS_SEQ -->
 	<changeSet id="createSequenceProductsSeq" author="luiz_borges">
 		<createSequence sequenceName="PRODUCTS_SEQ" incrementBy="1"
 			startValue="1" />
 	</changeSet>
 
-	<!-- Sequência: Payments_methods_SEQ -->
 	<changeSet id="createPaymentsMethodsSeq" author="luiz_borges">
 		<createSequence sequenceName="Payments_methods_SEQ" startValue="1"
 			incrementBy="1" />
 	</changeSet>
 
-	<!-- Sequência: Suppliers_SEQ -->
 	<changeSet id="createSuppliersSeq" author="luiz_borges">
 		<createSequence sequenceName="Suppliers_SEQ" startValue="1"
 			incrementBy="1" />
 	</changeSet>
 
-	<!-- Sequência: Feedstocks_SEQ -->
 	<changeSet id="createFeedstocksSeq" author="luiz_borges">
 		<createSequence sequenceName="Feedstocks_SEQ" startValue="1"
 			incrementBy="1" />
 	</changeSet>
 
-	<!-- Sequência: Supplier_Feedstock_Offer_SEQ -->
 	<changeSet id="createSupplierFeedstockOfferSeq" author="luiz_borges">
 		<createSequence sequenceName="Supplier_Feedstock_Offer_SEQ"
 			startValue="1" incrementBy="1" />
 	</changeSet>
 
-	<!-- Sequência: Supplier_Feedstock_SEQ -->
 	<changeSet id="createSupplierFeedstockSeq" author="luiz_borges">
 		<createSequence sequenceName="Supplier_Feedstock_SEQ" startValue="1"
 			incrementBy="1" />
 	</changeSet>
 
-	<!-- Sequência: Feedstock_Product_SEQ -->
 	<changeSet id="createFeedstockProductSeq" author="luiz_borges">
 		<createSequence sequenceName="Feedstock_Product_SEQ" startValue="1"
 			incrementBy="1" />
 	</changeSet>
+-->
 
 
 </databaseChangeLog>
