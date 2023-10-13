@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fluffy.backend.DTO.SuppliersDTO;
+import com.fluffy.backend.DTO.SupplierDTO;
 import com.fluffy.backend.entity.PaymentsMethods;
 import com.fluffy.backend.entity.Suppliers;
 import com.fluffy.backend.repository.PaymentsMethodsRepository;
@@ -20,13 +20,32 @@ public class SuppliersService {
 	@Autowired
 	private PaymentsMethodsRepository paymentsMethodsRepository;
 
-	public void saveSupplierWithPaymentsMethods(Suppliers supplier, PaymentsMethods paymentsMethods) {
-		PaymentsMethods savedPaymentsMethods = paymentsMethodsRepository.save(paymentsMethods);
-		
-		supplier.setPaymentsMethods(savedPaymentsMethods);
+	public Suppliers createSupplierAndPayment(SupplierDTO supplierDTO) {
+		Suppliers supplier = new Suppliers();
+		supplier.setName(supplierDTO.getName());
+		supplier.setSegment(supplierDTO.getSegment());
+		supplier.setDeliveryForecast(supplierDTO.getDeliveryForecast());
+		supplier.setCnpj(supplierDTO.getCnpj());
+		supplier.setPhone(supplierDTO.getPhone());
+		supplier.setAddress(supplierDTO.getAddress());
+		supplier.setCity(supplierDTO.getCity());
+		supplier.setState(supplierDTO.getState());
+		supplier.setStatus(supplierDTO.getStatus());
+
+		PaymentsMethods paymentMethod = new PaymentsMethods();
+		paymentMethod.setName(supplierDTO.getPaymentMethodName());
+		paymentMethod.setPayDay(supplierDTO.getPaymentMethodPayDay());
+
+		supplier.setPaymentsMethods(paymentMethod);
 
 		suppliersRepository.save(supplier);
+
+		return supplier;
 	}
+	
+	  public List<Suppliers> getAllSuppliers() {
+	        return suppliersRepository.findAll();
+	    }
 
 	public List<Suppliers> listSuppliersByName(String name) {
 		return suppliersRepository.findByName(name);
@@ -38,28 +57,27 @@ public class SuppliersService {
 		suppliersRepository.delete(suppliers);
 	}
 
-	public Suppliers updateSuppliers(Suppliers suppliers) {
-		Long supplierId = suppliers.getIdSupplier();
+	public Suppliers updateSupplierAndPaymentByName(String name, SupplierDTO updatedSupplier) {
+		Suppliers existingSupplier = suppliersRepository.findBySupplierName(name);
 
-		Suppliers existingSuppliers = suppliersRepository.findById(supplierId)
-				.orElseThrow(() -> new IllegalArgumentException("Supplier not found"));
+		if (existingSupplier != null) {
+			existingSupplier.setName(updatedSupplier.getName());
+			existingSupplier.setSegment(updatedSupplier.getSegment());
+			existingSupplier.setDeliveryForecast(updatedSupplier.getDeliveryForecast());
+			existingSupplier.setCnpj(updatedSupplier.getCnpj());
+			existingSupplier.setPhone(updatedSupplier.getPhone());
+			existingSupplier.setAddress(updatedSupplier.getAddress());
+			existingSupplier.setCity(updatedSupplier.getCity());
+			existingSupplier.setState(updatedSupplier.getState());
+			existingSupplier.setStatus(updatedSupplier.getStatus());
 
-		existingSuppliers.setName(suppliers.getName());
-		existingSuppliers.setSegment(suppliers.getSegment());
-		existingSuppliers.setDeliveryForecast(suppliers.getDeliveryForecast());
-		existingSuppliers.setCnpj(suppliers.getCnpj());
-		existingSuppliers.setPhone(suppliers.getPhone());
-		existingSuppliers.setAddress(suppliers.getAddress());
-		existingSuppliers.setCity(suppliers.getCity());
-		existingSuppliers.setState(suppliers.getState());
-		existingSuppliers.setStatus(suppliers.getStatus());
+			PaymentsMethods paymentMethod = existingSupplier.getPaymentsMethods();
+			paymentMethod.setName(updatedSupplier.getPaymentMethodName());
+			paymentMethod.setPayDay(updatedSupplier.getPaymentMethodPayDay());
 
-		PaymentsMethods paymentsMethods = suppliers.getPaymentsMethods();
-		if (paymentsMethods != null) {
-			paymentsMethods = paymentsMethodsRepository.save(paymentsMethods);
-			existingSuppliers.setPaymentsMethods(paymentsMethods);
+			return suppliersRepository.save(existingSupplier);
+		} else {
+			return null;
 		}
-
-		return suppliersRepository.save(existingSuppliers);
 	}
 }
