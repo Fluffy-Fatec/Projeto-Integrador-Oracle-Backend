@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -50,6 +52,6 @@ public class Suppliers {
     private String status;
     
 	@ManyToOne (cascade = CascadeType.ALL)
-	@JoinColumn(name = "pm_id")
+	@JoinColumn(name = "payment_method_id")
 	private PaymentsMethods paymentsMethods;
 }

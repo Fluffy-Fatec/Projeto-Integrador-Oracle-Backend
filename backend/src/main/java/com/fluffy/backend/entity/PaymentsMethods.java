@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -18,13 +20,14 @@ public class PaymentsMethods {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@Column(name = "pm_id")
 	private Long idPm;
 	
 	@Column(name = "pm_name")
 	private String name;
 	
-	@Column(name = "pay_day")
+	@Column(name = "payday")
 	private String payDay;
 
 }

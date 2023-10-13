@@ -11,15 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fluffy.backend.DTO.SuppliersDTO;
+import com.fluffy.backend.DTO.SupplierDTO;
 import com.fluffy.backend.entity.PaymentsMethods;
 import com.fluffy.backend.entity.Suppliers;
 import com.fluffy.backend.service.SuppliersService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @CrossOrigin
 @RestController
@@ -30,11 +29,14 @@ public class SuppliersController {
 	private SuppliersService suppliersService;
 
 	@PostMapping
-	public ResponseEntity<String> createSupplierWithPaymentsMethods(@RequestBody Suppliers supplier,
-			@RequestBody PaymentsMethods paymentsMethods) {
-		suppliersService.saveSupplierWithPaymentsMethods(supplier, paymentsMethods);
-		return ResponseEntity.ok("Fornecedor e Método de Pagamento salvos com sucesso.");
+	public Suppliers createSupplierAndPayment(@RequestBody SupplierDTO supplierDTO) {
+		return suppliersService.createSupplierAndPayment(supplierDTO);
 	}
+	
+	@GetMapping
+    public List<Suppliers>listAllSuppliers() {
+		return suppliersService.getAllSuppliers(); 
+    }
 
 	@GetMapping("/{name}")
 	public List<Suppliers> listSuppliersByName(@PathVariable String name) {
@@ -46,9 +48,12 @@ public class SuppliersController {
 		suppliersService.deleteSuppliersPorId(id);
 	}
 
-	@PutMapping("/update")
-	public Suppliers updateSupplier(@RequestBody Suppliers suppliers) {
-		return suppliersService.updateSuppliers(suppliers);
+	@PutMapping("/update/{name}")
+	public ResponseEntity<Suppliers> updateSupplierAndPaymentByName(@PathVariable String name,
+			@RequestBody SupplierDTO updatedSupplier) {
+		Suppliers updated = suppliersService.updateSupplierAndPaymentByName(name, updatedSupplier);
+
+		return ResponseEntity.ok(updated);
 	}
 
 }
