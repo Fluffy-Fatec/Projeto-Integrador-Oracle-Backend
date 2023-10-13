@@ -284,12 +284,10 @@
 
 	<!-- Sequências -->
 
-	<!-- Create Sequence COMMANDS_SEQ -->
 	<changeSet id="createSequenceCommandsSeq" author="luiz_borges">
 		<createSequence sequenceName="COMMANDS_SEQ" incrementBy="1"
 			startValue="1" />
 	</changeSet> 
-	<!-- Create Sequence PRODUCT_COMMAND_SEQ -->
 	<changeSet id="createSequenceProductCommandSeq" author="luiz_borges">
 		<createSequence sequenceName="PRODUCT_COMMAND_SEQ" incrementBy="1"
 			startValue="1" />
