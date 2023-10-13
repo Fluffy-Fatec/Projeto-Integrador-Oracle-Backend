@@ -143,7 +143,7 @@
 					${project.basedir}/src/main/resources/liquibase/changelog/${maven.build.timestamp}_changelog.xml</outputChangeLogFile>
 				<driver>oracle.jdbc.OracleDriver</driver>
 				<url>
-					jdbc:oracle:thin:@testeliquibase_high?TNS_ADMIN=/Users/oracle</url>
+					jdbc:oracle:thin:@bdfluffy_low?TNS_ADMIN=/Users/oracle</url>
 				<defaultSchemaName></defaultSchemaName>
 				<username>ADMIN</username>
 				<password>Fluffyfatec123</password>
