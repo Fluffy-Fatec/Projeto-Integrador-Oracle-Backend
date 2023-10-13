@@ -33,7 +33,7 @@ public class SuppliersController {
 		return suppliersService.createSupplierAndPayment(supplierDTO);
 	}
 	
-	@GetMapping("/all")
+	@GetMapping
     public List<Suppliers>listAllSuppliers() {
 		return suppliersService.getAllSuppliers(); 
     }
