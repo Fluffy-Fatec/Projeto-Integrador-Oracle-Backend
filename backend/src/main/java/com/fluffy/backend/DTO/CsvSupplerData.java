@@ -1,14 +1,14 @@
 package com.fluffy.backend.DTO;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-import com.fluffy.backend.entity.PaymentsMethods;
-import com.fluffy.backend.entity.Suppliers;
+import javax.persistence.Column;
 
 import lombok.Data;
 
 @Data
-public class SupplierDTO {
+public class CsvSupplerData {
 	private String name;
 	private String segment;
 	private String deliveryForecast;
@@ -20,4 +20,11 @@ public class SupplierDTO {
 	private String status;
 	private String paymentMethodName;
 	private Timestamp paymentMethodPayDay;
+	private String feedName;
+	private Double amountAvailable;
+	private String feedMeasurement;
+	private Double quantityCan;
+	private String measurement;
+	private BigDecimal value;
+
 }
