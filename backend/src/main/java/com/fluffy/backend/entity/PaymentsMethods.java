@@ -1,6 +1,7 @@
 package com.fluffy.backend.entity;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +29,6 @@ public class PaymentsMethods {
 	private String name;
 	
 	@Column(name = "payday")
-	private String payDay;
+	private Timestamp payDay;
 
 }

@@ -1,5 +1,6 @@
 package com.fluffy.backend.entity;
 
+import java.math.BigDecimal;
 import java.util.function.Supplier;
 
 import javax.persistence.Column;
@@ -38,6 +39,6 @@ public class SupplierFeedstockOffer {
 	private String measurement;
 
 	@Column(name = "sf_offer_value", nullable = false)
-	private Double value;
+	private BigDecimal value;
 
 }
