@@ -100,7 +100,7 @@
 	<!-- Tabela: Feedstocks -->
 	<changeSet id="createFeedstocksTable" author="luiz_borges">
 		<createTable tableName="Feedstocks">
-			<column name="feedstock_id" type="NUMBER">
+			<column name="feedstock_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="feedstock_name" type="VARCHAR(255)">
@@ -118,7 +118,7 @@
 	<!-- Tabela: Supplier_Feedstock_Offer -->
 	<changeSet id="createSupplierFeedstockOfferTable" author="luiz_borges">
 		<createTable tableName="Supplier_Feedstock_Offer">
-			<column name="sf_offer_id" type="NUMBER">
+			<column name="sf_offer_id" type="NUMBER" autoIncrement="true" >
 				<constraints primaryKey="true" />
 			</column>
 			<column name="supplier_id" type="NUMBER">
@@ -142,7 +142,7 @@
 	<!-- Tabela: Supplier_Feedstock -->
 	<changeSet id="createSupplierFeedstockTable" author="luiz_borges">
 		<createTable tableName="Supplier_Feedstock">
-			<column name="sf_id" type="NUMBER">
+			<column name="sf_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="date_arrive" type="TIMESTAMP">
@@ -181,7 +181,7 @@
 	<!-- Tabela: Feedstock_Product -->
 	<changeSet id="createFeedstockProductTable" author="luiz_borges">
 		<createTable tableName="Feedstock_Product">
-			<column name="fp_id" type="NUMBER">
+			<column name="fp_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="datetime_ready" type="TIMESTAMP">
