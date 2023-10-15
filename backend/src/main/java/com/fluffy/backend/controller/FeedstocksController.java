@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fluffy.backend.DTO.FeedstocksListDTO;
 import com.fluffy.backend.entity.Feedstocks;
 import com.fluffy.backend.entity.Suppliers;
 import com.fluffy.backend.service.FeedstocksService;
@@ -21,7 +22,7 @@ public class FeedstocksController {
 	FeedstocksService feedstocksService;
 
 	@GetMapping
-	public List<Feedstocks> listAllFeedstocks() {
+	public List<FeedstocksListDTO> listAllFeedstocks() {
 		return feedstocksService.getAllFeedstocks();
 	}
 }
