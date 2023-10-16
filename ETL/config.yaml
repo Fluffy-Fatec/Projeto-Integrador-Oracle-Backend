@@ -1,0 +1,121 @@
+source_database:
+  user: ADMIN
+  password: Fluffyfatec123
+  dsn: bdfluffy_medium
+  config_dir: /Users/Wallet_bdfluffy
+  wallet_location: /Users/Wallet_bdfluffy
+  wallet_password: Fluffyfatec123
+target_database:
+  user: ADMIN
+  password: Fluffyfatec123
+  dsn: dwfluffy_medium
+  config_dir: /Users/Wallet_dwfluffy
+  wallet_location: /Users/Wallet_dwfluffy
+  wallet_password: Fluffyfatec123
+tables:
+  - name: products
+    extract_query: "SELECT product_id, product_name, product_type, product_value FROM products"
+    insert_query: "INSERT INTO Products (product_id, product_name, product_type, product_value, datetime_upload) VALUES (:1, :2, :3, :4, CURRENT_TIMESTAMP)"
+    column_types:
+      - name: product_id
+        type: int
+      - name: product_name
+        type: str
+      - name: product_type
+        type: str
+      - name: product_value
+        type: float
+  - name: temporal
+    extract_query: "SELECT PC_DATETIME_ORDER FROM temporal_data"
+    insert_query: "INSERT INTO temporal (datetime_creation) VALUES (:1)"
+    column_types:
+      - name: datetime_creation
+        type: date
+  - name: sales_fact
+    extract_query: "SELECT * FROM temporal_combinado"
+    insert_query: "INSERT INTO Sales_Fact (temporal_id, product_id,sf_value, datetime_upload ) VALUES (:1, :2, :3, CURRENT_TIMESTAMP)"
+    column_types:
+      - name: temporal_id
+        type: int
+      - name: product_id
+        type: int
+      - name: sf_value
+        type: str
+      - name: datetime_upload
+        type: date
+  - name: suppliers
+    extract_query: "SELECT SUPPLIER_ID, SUPPLIER_NAME,SUPPLIER_SEGMENT,DELIVERY_FORECAST FROM SUPPLIERS"
+    insert_query: "INSERT INTO SUPPLIERS (SUPPLIERS_ID, SUPPLIER_NAME, SUPPLIER_SEGMENT, DELIVERY_FORECAST, DATETIME_UPLOAD) VALUES (:1, :2, :3, :4, CURRENT_TIMESTAMP)"
+    column_types:
+      - name: SUPPLIER_IDS
+        type: int
+      - name: SUPPLIER_NAME
+        type: str
+      - name: SUPPLIER_SEGMENT
+        type: str
+      - name: DELIVERY_FORECAST
+        type: str
+  - name: feedstocks
+    extract_query: "SELECT * FROM Feedstocks"
+    insert_query: "INSERT INTO Feedstock (feedstock_id, feedstock_name, amount_available, pc_measurement, datetime_upload) VALUES (:1, :2, :3, :4, CURRENT_TIMESTAMP)"
+    column_types:
+      - name: feedstock_id
+        type: int
+      - name: feedstock_name
+        type: str
+      - name: amount_available
+        type: float
+      - name: pc_measurement
+        type: str
+      - name: datetime_upload
+        type: date
+  - name: feedstocks_offered
+    extract_query: "SELECT SUPPLIER_ID, FEEDSTOCK_ID, 1 AS temporal_id, QUANTITY_CAN_SUPPLY AS quantity_offered, PC_MEASUREMENT,  SF_OFFER_VALUE AS value_offered FROM SUPPLIER_FEEDSTOCK_OFFER"
+    insert_query: "INSERT INTO feedstocks_offered (suppliers_id, feedstock_id, temporal_id, quantity_offered, pc_measurement, value_offered, datetime_upload) VALUES (:1, :2, :3, :4, :5, :6, CURRENT_TIMESTAMP)"
+    column_types:
+      - name: suppliers_id
+        type: int
+      - name: feedstock_id
+        type: int
+      - name: temporal_id
+        type: int
+      - name: quantity_offered
+        type: float
+      - name: pc_measurement
+        type: str
+      - name: value_offered
+        type: float
+      - name: datetime_upload
+        type: date
+  - name: feedstock_utilized
+    extract_query: "SELECT 1 AS temporal_id, SFO.FEEDSTOCK_ID, 1 AS PRODUCT_ID, SF.quantity_supplied FROM SUPPLIER_FEEDSTOCK_OFFER SFO JOIN SUPPLIER_FEEDSTOCK SF ON SFO.SUPPLIER_ID = SF.SUPPLIER_ID AND SFO.FEEDSTOCK_ID = SF.FEEDSTOCK_ID"
+    insert_query: "INSERT INTO feedstock_utilized (temporal_id, feedstock_id, product_id, feedstock_value, datetime_upload) VALUES (:1, :2, :3, :4, CURRENT_TIMESTAMP)"
+    column_types:
+      - name: temporal_id
+        type: int
+      - name: feedstock_id
+        type: int
+      - name: product_id
+        type: int
+      - name: feedstock_value
+        type: int
+      - name: datetime_upload
+        type: date
+  - name: feedstocks_acquired
+    extract_query: "SELECT SFO.SUPPLIER_ID, SFO.FEEDSTOCK_ID, 1 AS temporal_id, SF.QUANTITY_SUPPLIED, F.PC_MEASUREMENT, FA.DATE_ARRIVE FROM SUPPLIER_FEEDSTOCK_OFFER SFO JOIN SUPPLIER_FEEDSTOCK SF ON SFO.SUPPLIER_ID = SF.SUPPLIER_ID AND SFO.FEEDSTOCK_ID = SF.FEEDSTOCK_ID JOIN FEEDSTOCKS F ON SFO.FEEDSTOCK_ID = F.FEEDSTOCK_ID JOIN SUPPLIER_FEEDSTOCK FA ON SFO.SUPPLIER_ID = FA.SUPPLIER_ID"
+    insert_query: "INSERT INTO feedstocks_acquired (suppliers_id , feedstock_id, temporal_id, quantity_acquired, pc_measurement, time_arrived, datetime_upload) VALUES (:1, :2, :3, :4, :5, :6, CURRENT_TIMESTAMP)"
+    column_types:
+      - name: suppliers_id
+        type: int
+      - name: feedstock_id
+        type: int
+      - name: temporal_id
+        type: int
+      - name: quantity_acquired
+        type: float
+      - name: pc_measurement
+        type: str
+      - name: time_arrived
+        type: str
+      - name: datetime_upload
+        type: date
