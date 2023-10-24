@@ -4,43 +4,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 	<!--<include file="liquibase/changelog/initial_schema.xml" relativeToChangelogFile="false"/>-->
-	<!-- Create Table COMMANDS -->
-	<changeSet id="createTableCommands" author="luiz_borges">
-		<createTable tableName="COMMANDS">
-			<column name="COMMAND_ID" type="INTEGER" autoIncrement="true">
-				<constraints primaryKey="true" nullable="false" />
-			</column>
-			<column name="COMMAND_NUMBER" type="INTEGER" />
-			<column name="COMMAND_VALUE" type="NUMBER(10,2)"
-				defaultValueNumeric="0" />
-			<column name="DATETIME_COMMAND" type="TIMESTAMP" />
-		</createTable>
-	</changeSet>
-	<!-- Create Table PRODUCTS -->
-	<changeSet id="createTableProducts" author="luiz_borges">
-		<createTable tableName="PRODUCTS">
-			<column name="PRODUCT_ID" type="INTEGER" autoIncrement="true">
-				<constraints primaryKey="true" nullable="true" />
-			</column>
-			<column name="PRODUCT_NAME" type="VARCHAR(255)" />
-			<column name="PRODUCT_VALUE" type="NUMBER(10,2)"
-				defaultValueNumeric="0" />
-			<column name="PRODUCT_TYPE" type="VARCHAR(50)" />
-		</createTable>
-	</changeSet>
-	<!-- Create Table PRODUCT_COMMAND -->
-	<changeSet id="createTableProductCommand" author="luiz_borges">
-		<createTable tableName="PRODUCT_COMMAND">
-			<column name="PRODUCT_DEMAND_ID" type="INTEGER" autoIncrement="true">
-				<constraints primaryKey="true" nullable="false" />
-			</column>
-			<column name="PC_QUANTITY" type="NUMBER(10,2)" />
-			<column name="PC_DATETIME_ORDER" type="DATE" />
-			<column name="PRODUCT_ID" type="INTEGER" />
-			<column name="COMMAND_ID" type="INTEGER" />
-			<column name="PC_MEASUREMENT" type="VARCHAR(2)" />
-		</createTable>
-	</changeSet>
 
 	<!-- Create Table COMMANDS -->
 	<changeSet id="createTableCommands" author="luiz_borges">
@@ -51,7 +14,7 @@
 			<column name="COMMAND_NUMBER" type="INTEGER" />
 			<column name="COMMAND_VALUE" type="NUMBER(10,2)"
 				defaultValueNumeric="0" />
-			<column name="DATETIME_COMMAND" type="TIMESeTAMP" />
+			<column name="DATETIME_COMMAND" type="TIMESTAMP" />
 		</createTable>
 	</changeSet>
 
@@ -89,7 +52,7 @@
 	<!-- Tabela: Payments_methods -->
 	<changeSet id="createPaymentsMethodsTable" author="luiz_borges">
 		<createTable tableName="Payments_methods">
-			<column name="pm_id" type="NUMBER">
+			<column name="pm_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="pm_name" type="VARCHAR(255)">
@@ -105,7 +68,7 @@
 	<!-- Tabela: Suppliers -->
 	<changeSet id="createSuppliersTable" author="luiz_borges">
 		<createTable tableName="Suppliers">
-			<column name="supplier_id" type="NUMBER">
+			<column name="supplier_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="supplier_name" type="VARCHAR(255)">
@@ -145,7 +108,7 @@
 	<!-- Tabela: Stock -->
 	<changeSet id="createStockTable" author="luiz_borges">
 		<createTable tableName="Stock">
-			<column name="stock_id" type="NUMBER">
+			<column name="stock_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="stock_item_name" type="VARCHAR(255)">
@@ -165,7 +128,7 @@
 	<!-- Tabela: Supplier_Stock_Offer -->
 	<changeSet id="createSupplierStockOfferTable" author="luiz_borges">
 		<createTable tableName="Supplier_Stock_Offer">
-			<column name="sf_offer_id" type="NUMBER">
+			<column name="sf_offer_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="supplier_id" type="NUMBER">
@@ -189,7 +152,7 @@
 	<!-- Tabela: Supplier_Stock -->
 	<changeSet id="createSupplierStockTable" author="luiz_borges">
 		<createTable tableName="Supplier_Stock">
-			<column name="sf_id" type="NUMBER">
+			<column name="sf_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="date_arrive" type="TIMESTAMP">
@@ -228,7 +191,7 @@
 	<!-- Tabela: Stock_Product -->
 	<changeSet id="createStockProductTable" author="luiz_borges">
 		<createTable tableName="Stock_Product">
-			<column name="sp_id" type="NUMBER">
+			<column name="sp_id" type="NUMBER" autoIncrement="true">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="datetime_ready" type="TIMESTAMP">
@@ -248,8 +211,6 @@
 			</column>
 		</createTable>
 	</changeSet>
-
-	<!-- Chaves estrangeiras -->
 
 	<!-- Chave estrangeira na tabela Suppliers -->
 	<changeSet id="addFkSuppliersPaymentMethods" author="luiz_borges">
