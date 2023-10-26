@@ -11,15 +11,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Feedstocks")
-public class Feedstocks {
+@Table(name = "Stocks")
+public class Stocks {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "feedstock_id")
+    @Column(name = "stock_id")
     private Long IdFeedstock;
 
-    @Column(name = "feedstock_name", nullable = false)
+    @Column(name = "stock_item_name", nullable = false)
     private String name;
 
     @Column(name = "amount_availble", nullable = false)

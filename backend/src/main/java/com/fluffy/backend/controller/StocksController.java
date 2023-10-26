@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fluffy.backend.DTO.FeedstocksListDTO;
-import com.fluffy.backend.entity.Feedstocks;
+import com.fluffy.backend.DTO.StocksListDTO;
+import com.fluffy.backend.entity.Stocks;
 import com.fluffy.backend.entity.Suppliers;
-import com.fluffy.backend.service.FeedstocksService;
+import com.fluffy.backend.service.StocksService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/feedstocks")
-public class FeedstocksController {
+@RequestMapping("/api/stocks")
+public class StocksController {
 	
 	@Autowired
-	FeedstocksService feedstocksService;
+	StocksService feedstocksService;
 
 	@GetMapping
-	public List<FeedstocksListDTO> listAllFeedstocks() {
+	public List<StocksListDTO> listAllFeedstocks() {
 		return feedstocksService.getAllFeedstocks();
 	}
 }
