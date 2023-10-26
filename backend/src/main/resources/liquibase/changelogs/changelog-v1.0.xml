@@ -27,6 +27,9 @@
 			<column name="PRODUCT_NAME" type="VARCHAR(255)">
 				<constraints nullable="true" unique="true" />
 			</column>
+			<column name="PRODUCT_STATUS" type="VARCHAR(50)">
+				<constraints nullable="true" unique="true" />
+			</column>
 			<column
 				name="PRODUCT_VALUE" type="NUMBER(10,2)"
 				defaultValueNumeric="0" />
