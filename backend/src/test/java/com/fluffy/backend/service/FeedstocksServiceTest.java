@@ -13,21 +13,21 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.fluffy.backend.DTO.FeedstocksListDTO;
-import com.fluffy.backend.entity.Feedstocks;
-import com.fluffy.backend.entity.SupplierFeedstock;
-import com.fluffy.backend.repository.FeedstocksRepository;
-import com.fluffy.backend.repository.SupplierFeedstockRepository;
+import com.fluffy.backend.DTO.StocksListDTO;
+import com.fluffy.backend.entity.Stocks;
+import com.fluffy.backend.entity.SupplierStock;
+import com.fluffy.backend.repository.StocksRepository;
+import com.fluffy.backend.repository.SupplierStockRepository;
 
 public class FeedstocksServiceTest {
 	@InjectMocks
-	private FeedstocksService feedstocksService;
+	private StocksService feedstocksService;
 
 	@Mock
-	private FeedstocksRepository feedstocksRepository;
+	private StocksRepository feedstocksRepository;
 
 	@Mock
-	private SupplierFeedstockRepository supplierFeedstockRepository;
+	private SupplierStockRepository supplierFeedstockRepository;
 	
 	@BeforeEach
 	void setUp() {
@@ -37,14 +37,14 @@ public class FeedstocksServiceTest {
 	@Test
 	public void testGetAllFeedstocks() {
 		
-		List<Feedstocks> feedstocksList = new ArrayList<>();
+		List<Stocks> feedstocksList = new ArrayList<>();
 
-		Feedstocks feedstock1 = new Feedstocks();
+		Stocks feedstock1 = new Stocks();
 		feedstock1.setName("Feedstock1");
 		feedstock1.setAmountAvailable(100.0);
 		feedstock1.setMeasurement("Kg");
 
-		Feedstocks feedstock2 = new Feedstocks();
+		Stocks feedstock2 = new Stocks();
 		feedstock2.setName("Feedstock2");
 		feedstock2.setAmountAvailable(50.0);
 		feedstock2.setMeasurement("Liters");
@@ -52,14 +52,14 @@ public class FeedstocksServiceTest {
 		feedstocksList.add(feedstock1);
 		feedstocksList.add(feedstock2);
 
-		SupplierFeedstock supplierfeedstock = new SupplierFeedstock();
+		SupplierStock supplierfeedstock = new SupplierStock();
 		supplierfeedstock.setPrice(Double.valueOf("50"));
 		
 		when(feedstocksRepository.findAll()).thenReturn(feedstocksList);
-		when(supplierFeedstockRepository.findByFeedstocks(Mockito.any())).thenReturn(supplierfeedstock);
+		when(supplierFeedstockRepository.findByStocks(Mockito.any())).thenReturn(supplierfeedstock);
 		
 		
-		List<FeedstocksListDTO> feedstocksListDTO = feedstocksService.getAllFeedstocks();
+		List<StocksListDTO> feedstocksListDTO = feedstocksService.getAllFeedstocks();
 
 		assertEquals(2, feedstocksListDTO.size()); // Verifique o tamanho da lista
 		assertEquals("Feedstock1", feedstocksListDTO.get(0).getName()); // Verifique o nome do primeiro feedstock

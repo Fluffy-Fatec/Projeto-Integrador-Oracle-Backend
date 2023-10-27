@@ -17,13 +17,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Supplier_Feedstock")
-public class SupplierFeedstock {
+@Table(name = "Supplier_Stock")
+public class SupplierStock {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sf_id")
-    private Long IdSupplierFeedstock;
+    private Long IdSupplierStock;
 
     @Column(name = "date_arrive", nullable = false)
     private Timestamp dateArrive;
@@ -34,7 +34,7 @@ public class SupplierFeedstock {
     @Column(name = "sf_price", nullable = false)
     private Double price;
 
-    @Column(name = "sf_date_feedstock_end", nullable = false)
+    @Column(name = "sf_date_stock_end", nullable = false)
     private Timestamp dateFeedstockEnd;
 
     @Column(name = "sf_status")
@@ -45,8 +45,8 @@ public class SupplierFeedstock {
     private Suppliers suppliers;
 
     @ManyToOne
-    @JoinColumn(name = "feedstock_id")
-    private Feedstocks feedstocks;
+    @JoinColumn(name = "stock_id")
+    private Stocks stocks;
 
     @Column(name = "quantity_supplied", nullable = false)
     private Double quantitySupplied;
@@ -54,7 +54,6 @@ public class SupplierFeedstock {
     @Column(name = "quantity_solicited", nullable = false)
     private Double quantitySolicited;
    
-
     @Column(name = "pc_measurement", nullable = false)
     private String measurement;
 

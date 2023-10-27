@@ -18,13 +18,13 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fluffy.backend.DTO.CsvSupplerData;
-import com.fluffy.backend.entity.Feedstocks;
+import com.fluffy.backend.entity.Stocks;
 import com.fluffy.backend.entity.PaymentsMethods;
-import com.fluffy.backend.entity.SupplierFeedstockOffer;
+import com.fluffy.backend.entity.SupplierStockOffer;
 import com.fluffy.backend.entity.Suppliers;
-import com.fluffy.backend.repository.FeedstocksRepository;
+import com.fluffy.backend.repository.StocksRepository;
 import com.fluffy.backend.repository.PaymentsMethodsRepository;
-import com.fluffy.backend.repository.SupplierFeedstockOfferRepository;
+import com.fluffy.backend.repository.SupplierStockOfferRepository;
 import com.fluffy.backend.repository.SuppliersRepository;
 
 @SpringBootTest
@@ -40,10 +40,10 @@ public class CsvSupplierServiceTest {
 	private PaymentsMethodsRepository paymentsMethodsRepository;
 
 	@Mock
-	private SupplierFeedstockOfferRepository supplierFeedstockOfferRepository;
+	private SupplierStockOfferRepository supplierFeedstockOfferRepository;
 
 	@Mock
-	private FeedstocksRepository feedstocksRepository;
+	private StocksRepository feedstocksRepository;
 
 
 	@Test
@@ -73,16 +73,16 @@ public class CsvSupplierServiceTest {
 
 		when(suppliersRepository.saveAndFlush(any(Suppliers.class))).thenReturn(new Suppliers());
 		when(paymentsMethodsRepository.saveAndFlush(any(PaymentsMethods.class))).thenReturn(new PaymentsMethods());
-		when(feedstocksRepository.saveAndFlush(any(Feedstocks.class))).thenReturn(new Feedstocks());
-		when(supplierFeedstockOfferRepository.saveAndFlush(any(SupplierFeedstockOffer.class)))
-				.thenReturn(new SupplierFeedstockOffer());
+		when(feedstocksRepository.saveAndFlush(any(Stocks.class))).thenReturn(new Stocks());
+		when(supplierFeedstockOfferRepository.saveAndFlush(any(SupplierStockOffer.class)))
+				.thenReturn(new SupplierStockOffer());
 
 		csvSupplierService.processCsvData(csvDataList);
 
 		verify(suppliersRepository, times(1)).saveAndFlush(any(Suppliers.class));
 		verify(paymentsMethodsRepository, times(1)).saveAndFlush(any(PaymentsMethods.class));
-		verify(feedstocksRepository, times(1)).saveAndFlush(any(Feedstocks.class));
-		verify(supplierFeedstockOfferRepository, times(1)).saveAndFlush(any(SupplierFeedstockOffer.class));
+		verify(feedstocksRepository, times(1)).saveAndFlush(any(Stocks.class));
+		verify(supplierFeedstockOfferRepository, times(1)).saveAndFlush(any(SupplierStockOffer.class));
 	}
 
 }

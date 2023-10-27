@@ -3,7 +3,7 @@ package com.fluffy.backend.DTO;
 import lombok.Data;
 
 @Data
-public class FeedstocksListDTO {
+public class StocksListDTO {
 
 	private Long IdFeedstock;
 	
