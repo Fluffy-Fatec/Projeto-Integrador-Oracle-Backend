@@ -22,6 +22,9 @@ public class Product {
 
 	@Column(name = "product_name")
 	private String name;
+	
+	@Column(name = "product_status")
+	private String status;
 
 	@Column(name = "product_value")
 	private BigDecimal value;

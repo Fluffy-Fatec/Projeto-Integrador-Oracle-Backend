@@ -16,23 +16,23 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Feedstock_Product")
-public class FeedstockProduct {
+@Table(name = "Stock_Product")
+public class StockProduct {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "fp_id")
-    private Long IdFeedstockProduct;
+    @Column(name = "sp_id")
+    private Long IdStockProduct;
 
     @Column(name = "datetime_ready", nullable = false)
     private Timestamp datetimeReady;
 
-    @Column(name = "fp_amount_contained", nullable = false)
+    @Column(name = "sp_amount_contained", nullable = false)
     private Double amountContained;
 
     @ManyToOne
-    @JoinColumn(name = "feedstock_id", nullable = false)
-    private Feedstocks feedstocks;
+    @JoinColumn(name = "stock_id", nullable = false)
+    private Stocks stocks;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
