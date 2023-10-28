@@ -10,7 +10,9 @@ import com.fluffy.backend.DTO.StocksListDTO;
 import com.fluffy.backend.entity.Stocks;
 import com.fluffy.backend.entity.SupplierStock;
 import com.fluffy.backend.entity.SupplierStockOffer;
+import com.fluffy.backend.entity.Suppliers;
 import com.fluffy.backend.repository.StocksRepository;
+import com.fluffy.backend.repository.SupplierStockOfferRepository;
 import com.fluffy.backend.repository.SupplierStockRepository;
 
 @Service
@@ -21,6 +23,9 @@ public class StocksService {
 	
 	@Autowired
 	SupplierStockRepository supplierFeedstockRepository;
+	
+	@Autowired
+	SupplierStockOfferRepository supplierStockOfferRepository;
 	
 	 public List<StocksListDTO> getAllFeedstocks() {
 		 
@@ -40,4 +45,9 @@ public class StocksService {
 		 }
 	        return feedstocksListDTO;
 	    }
+	 
+	  public List<SupplierStockOffer> getAllSupplierStockOffer() {
+	        return supplierStockOfferRepository.findAll();
+	    }
+	 
 }

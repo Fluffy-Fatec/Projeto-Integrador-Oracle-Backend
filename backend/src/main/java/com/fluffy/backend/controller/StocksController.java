@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fluffy.backend.DTO.StocksListDTO;
 import com.fluffy.backend.entity.Stocks;
+import com.fluffy.backend.entity.SupplierStockOffer;
 import com.fluffy.backend.entity.Suppliers;
 import com.fluffy.backend.service.StocksService;
 
@@ -24,5 +25,10 @@ public class StocksController {
 	@GetMapping
 	public List<StocksListDTO> listAllFeedstocks() {
 		return feedstocksService.getAllFeedstocks();
+	}
+	
+	@GetMapping("/StockOffer")
+	public List<SupplierStockOffer> listAllSupplierStockOffer() {
+		return feedstocksService.getAllSupplierStockOffer();
 	}
 }
