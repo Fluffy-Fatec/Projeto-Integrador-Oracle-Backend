@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fluffy.backend.DTO.StocksAndSupplierStockOfferDTO;
 import com.fluffy.backend.DTO.StocksListDTO;
 import com.fluffy.backend.entity.Stocks;
 import com.fluffy.backend.entity.SupplierStock;
@@ -48,6 +49,10 @@ public class StocksService {
 	 
 	  public List<SupplierStockOffer> getAllSupplierStockOffer() {
 	        return supplierStockOfferRepository.findAll();
+	    }
+	  
+	  public List<StocksAndSupplierStockOfferDTO> findStocksAndSupplierStockOfferByName(String name) {
+	        return feedstocksRepository.findStocksAndSupplierStockOfferByName(name);
 	    }
 	 
 }
