@@ -1,6 +1,6 @@
-package com.fluffy.backend.controlle
-/;
+package com.fluffy.backend.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import com.fluffy.backend.service.StocksService;
 @RestController
 @RequestMapping("/api/stocks")
 public class StocksController {
-	
+
 	@Autowired
 	StocksService feedstocksService;
 
@@ -30,16 +30,25 @@ public class StocksController {
 	public List<StocksListDTO> listAllFeedstocks() {
 		return feedstocksService.getAllFeedstocks();
 	}
-	
+
 	@GetMapping("/StockOffer")
 	public List<SupplierStockOffer> listAllSupplierStockOffer() {
 		return feedstocksService.getAllSupplierStockOffer();
 	}
-	
-	 @GetMapping("/{name}")
-	    public ResponseEntity<List<StocksAndSupplierStockOfferDTO>> findStocksAndSupplierStockOfferByName(@PathVariable String name) {
-	        List<StocksAndSupplierStockOfferDTO> result = feedstocksService.findStocksAndSupplierStockOfferByName(name);
-	        return ResponseEntity.ok(result);
-	    }
-	
+
+	@GetMapping("/{name}")
+	public ResponseEntity<List<StocksAndSupplierStockOfferDTO>> findStocksAndSupplierStockOfferByName(
+			@PathVariable String name) {
+		List<Object[]> result = feedstocksService.findStocksAndSupplierStockOfferByName(name);
+
+		List<StocksAndSupplierStockOfferDTO> dtos = new ArrayList<>();
+		for (Object[] row : result) {
+			Stocks stocks = (Stocks) row[0];
+			SupplierStockOffer supplierStockOffer = (SupplierStockOffer) row[1];
+			dtos.add(new StocksAndSupplierStockOfferDTO(stocks, supplierStockOffer));
+		}
+
+		return ResponseEntity.ok(dtos);
+	}
+
 }

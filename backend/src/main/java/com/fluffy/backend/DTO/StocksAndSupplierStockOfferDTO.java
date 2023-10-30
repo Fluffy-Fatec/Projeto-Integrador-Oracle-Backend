@@ -7,8 +7,11 @@ import lombok.Data;
 
 @Data
 public class StocksAndSupplierStockOfferDTO {
-	
-	private Stocks stocks;
+    private Stocks stocks;
     private SupplierStockOffer supplierStockOffer;
 
+    public StocksAndSupplierStockOfferDTO(Stocks stocks, SupplierStockOffer supplierStockOffer) {
+        this.stocks = stocks;
+        this.supplierStockOffer = supplierStockOffer;
+    }
 }

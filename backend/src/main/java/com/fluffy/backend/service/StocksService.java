@@ -51,7 +51,7 @@ public class StocksService {
 	        return supplierStockOfferRepository.findAll();
 	    }
 	  
-	  public List<StocksAndSupplierStockOfferDTO> findStocksAndSupplierStockOfferByName(String name) {
+	  public List<Object[]> findStocksAndSupplierStockOfferByName(String name) {
 	        return feedstocksRepository.findStocksAndSupplierStockOfferByName(name);
 	    }
 	 
