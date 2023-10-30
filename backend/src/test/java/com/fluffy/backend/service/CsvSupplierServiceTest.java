@@ -61,7 +61,7 @@ public class CsvSupplierServiceTest {
 		csvData.setState("State A");
 		csvData.setStatus("Active");
 		csvData.setPaymentMethodName("PaymentMethodA");
-		csvData.setPaymentMethodPayDay(Timestamp.valueOf("2023-10-14 12:00:00"));
+		csvData.setPaymentMethodPayDay(Integer.parseInt("1"));
 		csvData.setFeedName("FeedA");
 		csvData.setAmountAvailable(100.0);
 		csvData.setFeedMeasurement("kg");

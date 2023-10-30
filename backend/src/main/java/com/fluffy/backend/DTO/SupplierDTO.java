@@ -19,5 +19,5 @@ public class SupplierDTO {
 	private String state;
 	private String status;
 	private String paymentMethodName;
-	private Timestamp paymentMethodPayDay;
+	private Integer paymentMethodPayDay;
 }

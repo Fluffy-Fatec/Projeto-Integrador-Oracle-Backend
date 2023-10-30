@@ -50,7 +50,7 @@ public class SuppliersServiceTest {
 	        supplierDTO.setState("StateName");
 	        supplierDTO.setStatus("Active");
 	        supplierDTO.setPaymentMethodName("PaymentMethod");
-	        supplierDTO.setPaymentMethodPayDay(Timestamp.valueOf("2023-10-14 12:00:00"));
+	        supplierDTO.setPaymentMethodPayDay(Integer.parseInt("1"));
 
 	        Suppliers supplier = new Suppliers();
 	        supplier.setName(supplierDTO.getName());
@@ -128,7 +128,7 @@ public class SuppliersServiceTest {
 	        updatedSupplier.setState("UpdatedState");
 	        updatedSupplier.setStatus("Inactive");
 	        updatedSupplier.setPaymentMethodName("UpdatedPaymentMethod");
-	        updatedSupplier.setPaymentMethodPayDay(Timestamp.valueOf("2023-10-14 12:00:00"));
+	        updatedSupplier.setPaymentMethodPayDay(Integer.parseInt("1"));
 
 	        Suppliers existingSupplier = new Suppliers();
 	        existingSupplier.setName("SupplierName");
@@ -143,7 +143,7 @@ public class SuppliersServiceTest {
 
 	        PaymentsMethods paymentMethod = new PaymentsMethods();
 	        paymentMethod.setName("PaymentMethod");
-	        paymentMethod.setPayDay(Timestamp.valueOf("2023-10-14 12:00:00"));
+	        paymentMethod.setPayDay(Integer.parseInt("1"));
 
 	        existingSupplier.setPaymentsMethods(paymentMethod);
 

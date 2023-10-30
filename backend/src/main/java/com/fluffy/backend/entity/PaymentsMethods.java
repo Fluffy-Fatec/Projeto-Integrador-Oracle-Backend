@@ -29,6 +29,6 @@ public class PaymentsMethods {
 	private String name;
 	
 	@Column(name = "payday")
-	private Timestamp payDay;
+	private Integer payDay;
 
 }

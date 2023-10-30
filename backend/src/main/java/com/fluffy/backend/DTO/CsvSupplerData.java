@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 
 import lombok.Data;
-
 @Data
 public class CsvSupplerData {
 	private String name;
@@ -19,7 +18,7 @@ public class CsvSupplerData {
 	private String state;
 	private String status;
 	private String paymentMethodName;
-	private Timestamp paymentMethodPayDay;
+	private Integer paymentMethodPayDay;
 	private String feedName;
 	private Double amountAvailable;
 	private String feedMeasurement;

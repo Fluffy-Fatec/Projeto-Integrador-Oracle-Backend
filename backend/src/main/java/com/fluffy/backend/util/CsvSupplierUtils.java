@@ -36,7 +36,7 @@ public class CsvSupplierUtils {
 	                csvData.setState(line[7]);
 	                csvData.setStatus(line[8]);
 	                csvData.setPaymentMethodName(line[9]);
-	                csvData.setPaymentMethodPayDay(Timestamp.valueOf(line[10]));
+	                csvData.setPaymentMethodPayDay(Integer.parseInt(line[10]));
 	                csvData.setFeedName(line[11]);
 	                csvData.setAmountAvailable(Double.parseDouble(line[12]));
 	                csvData.setFeedMeasurement(line[13]);
