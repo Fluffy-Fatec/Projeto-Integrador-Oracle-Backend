@@ -52,4 +52,8 @@ public class Suppliers {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "payment_method_id")
 	private PaymentsMethods paymentsMethods;
+
+
+
+
 }

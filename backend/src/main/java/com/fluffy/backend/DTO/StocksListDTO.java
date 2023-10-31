@@ -1,5 +1,7 @@
 package com.fluffy.backend.DTO;
 
+import java.math.BigDecimal;
+
 import lombok.Data;
 
 @Data
