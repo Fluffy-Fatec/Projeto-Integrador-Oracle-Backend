@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +17,6 @@ import com.fluffy.backend.DTO.StocksAndSupplierStockOfferDTO;
 import com.fluffy.backend.DTO.StocksListDTO;
 import com.fluffy.backend.entity.Stocks;
 import com.fluffy.backend.entity.SupplierStockOffer;
-import com.fluffy.backend.entity.Suppliers;
 import com.fluffy.backend.service.StocksService;
 
 @CrossOrigin
@@ -25,6 +26,8 @@ public class StocksController {
 
 	@Autowired
 	StocksService feedstocksService;
+	@Autowired
+	private StocksService stocksService;
 
 	@GetMapping
 	public List<StocksListDTO> listAllFeedstocks() {
@@ -49,6 +52,12 @@ public class StocksController {
 		}
 
 		return ResponseEntity.ok(dtos);
+	}
+
+	@PostMapping("/create")
+	public ResponseEntity<Stocks> createStock(@RequestBody Stocks newStock) {
+		Stocks createdStock = feedstocksService.createStock(newStock);
+		return ResponseEntity.ok(createdStock);
 	}
 
 }

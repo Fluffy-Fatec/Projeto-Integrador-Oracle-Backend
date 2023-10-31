@@ -14,4 +14,8 @@ public class StocksListDTO {
 	private String measurement;
 	
 	private Double price;
+
+	public class SupplierInfo {
+
+	}
 }

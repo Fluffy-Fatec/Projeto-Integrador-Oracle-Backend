@@ -7,23 +7,21 @@ import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fluffy.backend.DTO.CsvSupplerData;
-import com.fluffy.backend.entity.Stocks;
 import com.fluffy.backend.entity.PaymentsMethods;
+import com.fluffy.backend.entity.Stocks;
 import com.fluffy.backend.entity.SupplierStockOffer;
 import com.fluffy.backend.entity.Suppliers;
-import com.fluffy.backend.repository.StocksRepository;
 import com.fluffy.backend.repository.PaymentsMethodsRepository;
+import com.fluffy.backend.repository.StocksRepository;
 import com.fluffy.backend.repository.SupplierStockOfferRepository;
 import com.fluffy.backend.repository.SuppliersRepository;
 
@@ -59,7 +57,7 @@ public class CsvSupplierServiceTest {
 		csvData.setAddress("Address A");
 		csvData.setCity("City A");
 		csvData.setState("State A");
-		csvData.setStatus("Active");
+		csvData.setStatus(1);
 		csvData.setPaymentMethodName("PaymentMethodA");
 		csvData.setPaymentMethodPayDay(Integer.parseInt("1"));
 		csvData.setFeedName("FeedA");

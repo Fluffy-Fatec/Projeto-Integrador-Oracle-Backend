@@ -16,7 +16,7 @@ public class CsvSupplerData {
 	private String address;
 	private String city;
 	private String state;
-	private String status;
+	private Integer status;
 	private String paymentMethodName;
 	private Integer paymentMethodPayDay;
 	private String feedName;

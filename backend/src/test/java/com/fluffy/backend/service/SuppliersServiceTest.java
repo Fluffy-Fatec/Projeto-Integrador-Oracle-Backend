@@ -47,8 +47,8 @@ public class SuppliersServiceTest {
 	        supplierDTO.setPhone((long) 1234567890);
 	        supplierDTO.setAddress("AddressName");
 	        supplierDTO.setCity("CityName");
-	        supplierDTO.setState("StateName");
-	        supplierDTO.setStatus("Active");
+	        supplierDTO.setState("1");
+	        supplierDTO.setStatus(1);
 	        supplierDTO.setPaymentMethodName("PaymentMethod");
 	        supplierDTO.setPaymentMethodPayDay(Integer.parseInt("1"));
 
@@ -126,7 +126,7 @@ public class SuppliersServiceTest {
 	        updatedSupplier.setAddress("UpdatedAddress");
 	        updatedSupplier.setCity("UpdatedCity");
 	        updatedSupplier.setState("UpdatedState");
-	        updatedSupplier.setStatus("Inactive");
+	        updatedSupplier.setStatus(1);
 	        updatedSupplier.setPaymentMethodName("UpdatedPaymentMethod");
 	        updatedSupplier.setPaymentMethodPayDay(Integer.parseInt("1"));
 
@@ -139,7 +139,7 @@ public class SuppliersServiceTest {
 	        existingSupplier.setAddress("AddressName");
 	        existingSupplier.setCity("CityName");
 	        existingSupplier.setState("StateName");
-	        existingSupplier.setStatus("Active");
+	        existingSupplier.setStatus(1);
 
 	        PaymentsMethods paymentMethod = new PaymentsMethods();
 	        paymentMethod.setName("PaymentMethod");

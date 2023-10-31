@@ -18,41 +18,47 @@ import com.fluffy.backend.repository.SupplierStockRepository;
 
 @Service
 public class StocksService {
-	
+
 	@Autowired
 	StocksRepository feedstocksRepository;
-	
+
 	@Autowired
 	SupplierStockRepository supplierFeedstockRepository;
-	
 	@Autowired
+
 	SupplierStockOfferRepository supplierStockOfferRepository;
-	
-	 public List<StocksListDTO> getAllFeedstocks() {
-		 
-		 List<StocksListDTO> feedstocksListDTO = new ArrayList<>();
-		 
-		 for(Stocks feedstock:feedstocksRepository.findAll()) {
-			 StocksListDTO feedstocksDTO = new StocksListDTO();
-			 
-			 SupplierStock supplierFeedstock  = supplierFeedstockRepository.findByStocks(feedstock);
-			 
-			 feedstocksDTO.setIdFeedstock(feedstock.getIdFeedstock());
-			 feedstocksDTO.setName(feedstock.getName());
-			 feedstocksDTO.setAmountAvailable(feedstock.getAmountAvailable());
-			 feedstocksDTO.setMeasurement(feedstock.getMeasurement());
-			 feedstocksDTO.setPrice(supplierFeedstock.getPrice());
-			 feedstocksListDTO.add(feedstocksDTO);
-		 }
-	        return feedstocksListDTO;
-	    }
-	 
-	  public List<SupplierStockOffer> getAllSupplierStockOffer() {
-	        return supplierStockOfferRepository.findAll();
-	    }
-	  
-	  public List<Object[]> findStocksAndSupplierStockOfferByName(String name) {
-	        return feedstocksRepository.findStocksAndSupplierStockOfferByName(name);
-	    }
-	 
+	@Autowired
+	StocksRepository stocksRepository;
+
+	public List<StocksListDTO> getAllFeedstocks() {
+
+		List<StocksListDTO> feedstocksListDTO = new ArrayList<>();
+
+		for (Stocks feedstock : feedstocksRepository.findAll()) {
+			StocksListDTO feedstocksDTO = new StocksListDTO();
+
+			SupplierStock supplierFeedstock = supplierFeedstockRepository.findByStocks(feedstock);
+
+			feedstocksDTO.setIdFeedstock(feedstock.getIdFeedstock());
+			feedstocksDTO.setName(feedstock.getName());
+			feedstocksDTO.setAmountAvailable(feedstock.getAmountAvailable());
+			feedstocksDTO.setMeasurement(feedstock.getMeasurement());
+			feedstocksDTO.setPrice(supplierFeedstock.getPrice());
+			feedstocksListDTO.add(feedstocksDTO);
+		}
+		return feedstocksListDTO;
+	}
+
+	public List<SupplierStockOffer> getAllSupplierStockOffer() {
+		return supplierStockOfferRepository.findAll();
+	}
+
+	public List<Object[]> findStocksAndSupplierStockOfferByName(String name) {
+		return feedstocksRepository.findStocksAndSupplierStockOfferByName(name);
+	}
+
+	public Stocks createStock(Stocks newStock) {
+		return stocksRepository.save(newStock);
+	}
+
 }

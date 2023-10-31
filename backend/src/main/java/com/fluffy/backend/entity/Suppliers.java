@@ -49,7 +49,7 @@ public class Suppliers {
     private String state;
     
     @Column(name = "status")
-    private String status;
+    private Integer status;
     
 	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name = "payment_method_id")
