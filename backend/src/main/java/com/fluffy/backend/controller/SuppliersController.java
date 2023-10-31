@@ -23,8 +23,7 @@ import com.fluffy.backend.service.SuppliersService;
 @RequestMapping("/api/suppliers")
 public class SuppliersController {
 
-	@Autowired
-	private SuppliersService suppliersService;
+	@Autowired SuppliersService suppliersService;
 
 	@PostMapping
 	public Suppliers createSupplierAndPayment(@RequestBody SupplierDTO supplierDTO) {
