@@ -20,8 +20,8 @@ public class CsvSupplierUtilsTest {
 	    @Test
 	    public void testReadCsv() throws IOException {
 	        String csvData = "Name,Segment,DeliveryForecast,Cnpj,Phone,Address,City,State,Status,PaymentMethodName,PaymentMethodPayDay,FeedName,AmountAvailable,FeedMeasurement,QuantityCan,Measurement,Value\n" +
-	                "Company A,Segment A,2023-10-14,1234567890,1234567890,Address A,City A,State A,Active,PaymentMethodA,2023-10-14 12:00:00,FeedA,100.0,kg,50.0,liters,500.50\n" +
-	                "Company B,Segment B,2023-10-15,0987654321,0987654321,Address B,City B,State B,Inactive,PaymentMethodB,2023-10-15 13:00:00,FeedB,200.0,liters,75.0,kg,750.75";
+	                "Company A,Segment A,2023-10-14,1234567890,1234567890,Address A,City A,State A,1,PaymentMethodA,2023-10-14 12:00:00,FeedA,100.0,kg,50.0,liters,500.50\n" +
+	                "Company B,Segment B,2023-10-15,0987654321,0987654321,Address B,City B,State B,1,PaymentMethodB,2023-10-15 13:00:00,FeedB,200.0,liters,75.0,kg,750.75";
 
 	        MockMultipartFile csvFile = new MockMultipartFile("file", "test.csv", "text/csv", csvData.getBytes());
 
@@ -39,7 +39,7 @@ public class CsvSupplierUtilsTest {
 	            assertEquals("Address A", data1.getAddress());
 	            assertEquals("City A", data1.getCity());
 	            assertEquals("State A", data1.getState());
-	            assertEquals("Active", data1.getStatus());
+	            assertEquals(1, data1.getStatus());
 	            assertEquals("PaymentMethodA", data1.getPaymentMethodName());
 	            assertEquals(Timestamp.valueOf("2023-10-14 12:00:00"), data1.getPaymentMethodPayDay());
 	            assertEquals("FeedA", data1.getFeedName());

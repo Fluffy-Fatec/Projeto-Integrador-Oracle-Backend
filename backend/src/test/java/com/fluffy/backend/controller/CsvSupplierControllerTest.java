@@ -37,15 +37,16 @@ public class CsvSupplierControllerTest {
 
 	@Test
 	public void testUploadCsvSuccess() throws IOException {
-		String csvContent = "Name,Segment,DeliveryForecast,Cnpj,Phone,Address,City,State,Status,PaymentMethodName,PaymentMethodPayDay,FeedName,AmountAvailable,FeedMeasurement,QuantityCan,Measurement,Value\n"
-				+ "Company A,Segment A,2023-10-14,1234567890,1234567890,Address A,City A,State A,Active,PaymentMethodA,2023-10-14 12:00:00,FeedA,100.0,kg,50.0,liters,500.50\n";
-		MultipartFile mockFile = new MockMultipartFile("file", "test.csv", "text/csv", csvContent.getBytes());
+	    String csvContent = "Name,Segment,DeliveryForecast,Cnpj,Phone,Address,City,State,Status,PaymentMethodName,PaymentMethodPayDay,FeedName,AmountAvailable,FeedMeasurement,QuantityCan,Measurement,Value\n"
+	            + "Company A,Segment A,2023-10-14,1234567890,1234567890,Address A,City A,State A,1,PaymentMethodA,15,FeedA,100.0,kg,50.0,liters,500.50\n";
+	    MultipartFile mockFile = new MockMultipartFile("file", "test.csv", "text/csv", csvContent.getBytes());
 
-		ResponseEntity<String> response = csvSupplierController.uploadCsv(mockFile);
+	    ResponseEntity<String> response = csvSupplierController.uploadCsv(mockFile);
 
-		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertEquals("Dados CSV importados com sucesso.", response.getBody());
+	    assertEquals(HttpStatus.OK, response.getStatusCode());
+	    assertEquals("Dados CSV importados com sucesso.", response.getBody());
 	}
+
 
 	@Test
 	public void testUploadCsvEmptyFile() throws IOException {
