@@ -1,11 +1,9 @@
 package com.fluffy.backend.DTO;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
-
-import javax.persistence.Column;
 
 import lombok.Data;
+
 @Data
 public class CsvSupplerData {
 	private String name;

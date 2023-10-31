@@ -1,11 +1,13 @@
 package com.fluffy.backend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,5 +67,38 @@ public class SupplierStockOfferController {
 		return ResponseEntity.ok(supplierStockOffer);
 	}
 
-	
+	@PutMapping("/{id}")
+	public ResponseEntity<SupplierStockOffer> updateSupplierStockOffer(@PathVariable Long id,
+			@RequestBody SupplierStockOfferDTO supplierStockOfferDTO) {
+		// Verifique se o SupplierStockOffer com o ID fornecido existe
+		SupplierStockOffer existingSupplierStockOffer = supplierStockOfferRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("SupplierStockOffer not found"));
+
+		// Atualize os campos do SupplierStockOffer com base nos dados do DTO
+		Suppliers supplier = suppliersRepository.findById(supplierStockOfferDTO.getSupplierId())
+				.orElseThrow(() -> new IllegalArgumentException("Supplier not found"));
+		Stocks stock = stocksRepository.findById(supplierStockOfferDTO.getStockId())
+				.orElseThrow(() -> new IllegalArgumentException("Stock not found"));
+
+		existingSupplierStockOffer.setSuppliers(supplier);
+		existingSupplierStockOffer.setStocks(stock);
+		existingSupplierStockOffer.setQuantityCan(supplierStockOfferDTO.getQuantityCan());
+		existingSupplierStockOffer.setMeasurement(supplierStockOfferDTO.getMeasurement());
+		existingSupplierStockOffer.setValue(supplierStockOfferDTO.getValue());
+
+		// Salve as atualizações
+		SupplierStockOffer updatedSupplierStockOffer = supplierStockOfferRepository.save(existingSupplierStockOffer);
+
+		return ResponseEntity.ok(updatedSupplierStockOffer);
+	}
+
+	@GetMapping
+	public List<SupplierStockOffer> listAllSupplierStockOffer() {
+		return supplierStockOfferService.getAllSupplierStockOffer();
+	}
+
+	@DeleteMapping("/{id}")
+	public void deleteSupplierStockOffer(@PathVariable Long id) {
+		supplierStockOfferService.deleteSupplierStockOfferPorId(id);
+	}
 }

@@ -30,11 +30,11 @@ public class SuppliersController {
 	public Suppliers createSupplierAndPayment(@RequestBody SupplierDTO supplierDTO) {
 		return suppliersService.createSupplierAndPayment(supplierDTO);
 	}
-	
+
 	@GetMapping
-    public List<Suppliers>listAllSuppliers() {
-		return suppliersService.getAllSuppliers(); 
-    }
+	public List<Suppliers> listAllSuppliers() {
+		return suppliersService.getAllSuppliers();
+	}
 
 	@GetMapping("/{name}")
 	public List<Suppliers> listSuppliersByName(@PathVariable String name) {

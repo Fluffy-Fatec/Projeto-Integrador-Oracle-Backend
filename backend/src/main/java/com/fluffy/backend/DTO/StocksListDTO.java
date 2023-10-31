@@ -6,13 +6,13 @@ import lombok.Data;
 public class StocksListDTO {
 
 	private Long IdFeedstock;
-	
+
 	private String name;
-	
+
 	private Double amountAvailable;
-	
+
 	private String measurement;
-	
+
 	private Double price;
 
 	public class SupplierInfo {

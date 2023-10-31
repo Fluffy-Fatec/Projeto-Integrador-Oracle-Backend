@@ -8,7 +8,6 @@ import lombok.Data;
 @Data
 public class CsvData {
 
-
 	private String productName;
 	private BigDecimal productValue;
 	private String productType;

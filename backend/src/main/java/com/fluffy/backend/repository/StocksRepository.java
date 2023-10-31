@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.fluffy.backend.DTO.StocksAndSupplierStockOfferDTO;
 import com.fluffy.backend.entity.Stocks;
 
 public interface StocksRepository extends JpaRepository<Stocks, Long> {

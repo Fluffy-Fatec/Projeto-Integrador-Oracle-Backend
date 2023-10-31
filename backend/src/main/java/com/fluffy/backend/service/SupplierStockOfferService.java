@@ -1,10 +1,9 @@
 package com.fluffy.backend.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.fluffy.backend.DTO.SupplierStockOfferDTO;
 import com.fluffy.backend.entity.Stocks;
@@ -41,6 +40,12 @@ public class SupplierStockOfferService {
 	        return supplierStockOfferRepository1.save(newSupplierStockOffer);
 	    }
 
-
-
+	    public List<SupplierStockOffer> getAllSupplierStockOffer() {
+	        return supplierStockOfferRepository1.findAll();
+	    }
+	    public void deleteSupplierStockOfferPorId(Long id) {
+	        SupplierStockOffer supplierStockOffer = supplierStockOfferRepository1.findById(id)
+	            .orElseThrow(() -> new IllegalArgumentException("SupplierStockOffer not found"));
+	        supplierStockOfferRepository1.delete(supplierStockOffer);
+	    }
 }

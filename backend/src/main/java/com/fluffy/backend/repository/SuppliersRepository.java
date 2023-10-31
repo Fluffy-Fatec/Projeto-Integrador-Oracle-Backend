@@ -11,7 +11,6 @@ import com.fluffy.backend.entity.Suppliers;
 
 @Repository
 public interface SuppliersRepository extends JpaRepository<Suppliers, Long> {
-    Suppliers save(Suppliers supplier);
 
 	public List<Suppliers> findByName(String name);
 

@@ -1,10 +1,5 @@
 package com.fluffy.backend.DTO;
 
-import java.sql.Timestamp;
-
-import com.fluffy.backend.entity.PaymentsMethods;
-import com.fluffy.backend.entity.Suppliers;
-
 import lombok.Data;
 
 @Data
