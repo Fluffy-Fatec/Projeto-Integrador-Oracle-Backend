@@ -3,7 +3,6 @@ package com.fluffy.backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fluffy.backend.DTO.SupplierDTO;
-import com.fluffy.backend.entity.PaymentsMethods;
 import com.fluffy.backend.entity.Suppliers;
 import com.fluffy.backend.service.SuppliersService;
 
@@ -25,18 +23,17 @@ import com.fluffy.backend.service.SuppliersService;
 @RequestMapping("/api/suppliers")
 public class SuppliersController {
 
-	@Autowired
-	private SuppliersService suppliersService;
+	@Autowired SuppliersService suppliersService;
 
 	@PostMapping
 	public Suppliers createSupplierAndPayment(@RequestBody SupplierDTO supplierDTO) {
 		return suppliersService.createSupplierAndPayment(supplierDTO);
 	}
-	
+
 	@GetMapping
-    public List<Suppliers>listAllSuppliers() {
-		return suppliersService.getAllSuppliers(); 
-    }
+	public List<Suppliers> listAllSuppliers() {
+		return suppliersService.getAllSuppliers();
+	}
 
 	@GetMapping("/{name}")
 	public List<Suppliers> listSuppliersByName(@PathVariable String name) {

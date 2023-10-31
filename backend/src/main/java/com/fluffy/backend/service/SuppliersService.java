@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.fluffy.backend.DTO.SupplierDTO;
 import com.fluffy.backend.entity.PaymentsMethods;
 import com.fluffy.backend.entity.Suppliers;
-import com.fluffy.backend.repository.PaymentsMethodsRepository;
 import com.fluffy.backend.repository.SuppliersRepository;
 
 @Service
@@ -16,9 +15,6 @@ public class SuppliersService {
 
 	@Autowired
 	private SuppliersRepository suppliersRepository;
-
-	@Autowired
-	private PaymentsMethodsRepository paymentsMethodsRepository;
 
 	public Suppliers createSupplierAndPayment(SupplierDTO supplierDTO) {
 		Suppliers supplier = new Suppliers();

@@ -1,7 +1,6 @@
 package com.fluffy.backend.entity;
 
 import java.math.BigDecimal;
-import java.util.function.Supplier;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

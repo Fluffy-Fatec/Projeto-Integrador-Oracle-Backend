@@ -11,20 +11,20 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Stocks")
+@Table(name = "Stock")
 public class Stocks {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "stock_id")
-    private Long IdFeedstock;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "stock_id")
+	private Long IdFeedstock;
 
-    @Column(name = "stock_item_name", nullable = false)
-    private String name;
+	@Column(name = "stock_item_name", nullable = false)
+	private String name;
 
-    @Column(name = "amount_availble", nullable = false)
-    private Double amountAvailable;
+	@Column(name = "amount_availble", nullable = false)
+	private Double amountAvailable;
 
-    @Column(name = "pc_measurement", nullable = false)
-    private String measurement;
+	@Column(name = "pc_measurement", nullable = false)
+	private String measurement;
 }
