@@ -17,4 +17,5 @@ public class CsvData {
 	private Timestamp pcDatetimeOrder;
 	private Timestamp commandDateTime;
 	private BigDecimal commandValue;
+	private String status;
 }
