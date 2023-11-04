@@ -32,15 +32,6 @@ public class StocksControllerTest {
         stocksController.feedstocksService = stocksService;
     }
 
-    @Test
-    public void testListAllFeedstocks() {
-        List<StocksListDTO> stocksList = new ArrayList<>();
-        Mockito.when(stocksService.getAllFeedstocks()).thenReturn(stocksList);
-
-        List<StocksListDTO> result = stocksController.listAllFeedstocks();
-
-        assertEquals(stocksList, result);
-    }
 
     @Test
     public void testListAllSupplierStockOffer() {

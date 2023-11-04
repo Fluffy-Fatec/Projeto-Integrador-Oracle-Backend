@@ -30,11 +30,10 @@ public class StocksController {
 	@Autowired
 	private StocksService stocksService;
 
-	@GetMapping
-	public List<StocksListDTO> listAllFeedstocks() {
-		return feedstocksService.getAllFeedstocks();
-	}
-
+	 @GetMapping()
+	    public List<Stocks> getAllStocks() {
+	        return stocksService.getAllStocks();
+	    }
 	@GetMapping("/StockOffer")
 	public List<SupplierStockOffer> listAllSupplierStockOffer() {
 		return feedstocksService.getAllSupplierStockOffer();

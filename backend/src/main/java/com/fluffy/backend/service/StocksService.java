@@ -60,4 +60,13 @@ public class StocksService {
 	public void deleteStockById(Long stockId) {
 		feedstocksRepository.deleteById(stockId);
 	}
+	public List<Stocks> getAllStocks() {
+        return feedstocksRepository.findAll();
+    }
 }
+
+
+
+
+
+
