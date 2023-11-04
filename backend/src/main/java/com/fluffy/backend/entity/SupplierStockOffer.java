@@ -40,4 +40,5 @@ public class SupplierStockOffer {
 	@Column(name = "sf_offer_value", nullable = false)
 	private BigDecimal value;
 
+
 }

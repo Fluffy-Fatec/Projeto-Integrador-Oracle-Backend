@@ -53,6 +53,11 @@ public class Suppliers {
 	@JoinColumn(name = "payment_method_id")
 	private PaymentsMethods paymentsMethods;
 
+	public void setId(Long supplierId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 
