@@ -19,7 +19,7 @@ import com.fluffy.backend.entity.SupplierStock;
 import com.fluffy.backend.repository.StocksRepository;
 import com.fluffy.backend.repository.SupplierStockRepository;
 
-public class FeedstocksServiceTest {
+public class StocksServiceTest {
 	@InjectMocks
 	private StocksService feedstocksService;
 
@@ -67,4 +67,7 @@ public class FeedstocksServiceTest {
 																	// feedstock
 		assertEquals("Kg", feedstocksListDTO.get(0).getMeasurement()); // Verifique a unidade de medida do primeiro feedstock
 	}
+	
+	
+	
 }
