@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,9 +33,9 @@ public class CsvSupplierUtils {
 	                csvData.setAddress(line[5]);
 	                csvData.setCity(line[6]);
 	                csvData.setState(line[7]);
-	                csvData.setStatus(line[8]);
+	                csvData.setStatus(Integer.parseInt(line[8]));
 	                csvData.setPaymentMethodName(line[9]);
-	                csvData.setPaymentMethodPayDay(Timestamp.valueOf(line[10]));
+	                csvData.setPaymentMethodPayDay(Integer.parseInt(line[10]));
 	                csvData.setFeedName(line[11]);
 	                csvData.setAmountAvailable(Double.parseDouble(line[12]));
 	                csvData.setFeedMeasurement(line[13]);

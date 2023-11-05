@@ -4,6 +4,7 @@ class ETLLoader:
     def __init__(self, target_connector):
         self.target_connector = target_connector
 
+
     def load_data(self, insert_query, data):
         try:
             dw_connection = self.target_connector.get_connection()

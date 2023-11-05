@@ -1,7 +1,6 @@
 package com.fluffy.backend.entity;
 
 import java.math.BigDecimal;
-import java.util.function.Supplier;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +15,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Supplier_Feedstock_Offer")
-public class SupplierFeedstockOffer {
+@Table(name = "Supplier_Stock_Offer")
+public class SupplierStockOffer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +28,8 @@ public class SupplierFeedstockOffer {
 	private Suppliers suppliers;
 
 	@ManyToOne
-	@JoinColumn(name = "feedstock_id")
-	private Feedstocks feedstocks;
+	@JoinColumn(name = "stock_id")
+	private Stocks stocks;
 
 	@Column(name = "quantity_can_supply", nullable = false)
 	private Double quantityCan;
@@ -40,5 +39,6 @@ public class SupplierFeedstockOffer {
 
 	@Column(name = "sf_offer_value", nullable = false)
 	private BigDecimal value;
+
 
 }

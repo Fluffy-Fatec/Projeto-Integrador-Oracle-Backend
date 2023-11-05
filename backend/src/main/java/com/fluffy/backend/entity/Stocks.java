@@ -7,25 +7,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Payments_methods")
-public class PaymentsMethods {
-	
+@Table(name = "Stock")
+public class Stocks {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	@Column(name = "pm_id")
-	private Long idPm;
-	
-	@Column(name = "pm_name")
-	private String name;
-	
-	@Column(name = "payday")
-	private Integer payDay;
+	@Column(name = "stock_id")
+	private Long Idstock;
 
+	@Column(name = "stock_item_name", nullable = false)
+	private String name;
+
+	@Column(name = "amount_availble", nullable = false)
+	private Double amountAvailable;
+
+	@Column(name = "pc_measurement", nullable = false)
+	private String measurement;
+
+	
 }

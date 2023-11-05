@@ -1,9 +1,6 @@
 package com.fluffy.backend.DTO;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
-
-import javax.persistence.Column;
 
 import lombok.Data;
 
@@ -17,9 +14,9 @@ public class CsvSupplerData {
 	private String address;
 	private String city;
 	private String state;
-	private String status;
+	private Integer status;
 	private String paymentMethodName;
-	private Timestamp paymentMethodPayDay;
+	private Integer paymentMethodPayDay;
 	private String feedName;
 	private Double amountAvailable;
 	private String feedMeasurement;
