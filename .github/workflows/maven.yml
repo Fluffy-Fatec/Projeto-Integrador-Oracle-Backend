@@ -43,3 +43,11 @@ jobs:
     # Compila o projeto usando o Maven
     - name: Compilar com Maven
       run: mvn -B package --file backend/pom.xml
+
+    # Executa os testes automatizados
+    - name: Executar testes
+      run: mvn test --file backend/pom.xml
+
+    # Gera e publica relatórios de cobertura de testes (opcional)
+    - name: Gerar relatório de cobertura
+      run: mvn test jacoco:report --file backend/pom.xml
