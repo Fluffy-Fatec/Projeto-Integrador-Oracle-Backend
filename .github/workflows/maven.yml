@@ -51,3 +51,19 @@ jobs:
     # Gera e publica relatórios de cobertura de testes (opcional)
     - name: Gerar relatório de cobertura
       run: mvn test jacoco:report --file backend/pom.xml
+      
+    # Se estiver usando o SonarQube para análise estática de código, adicione esta etapa
+    - name: Análise SonarQube
+      uses: SonarSource/sonarqube-scan-action@master
+      with:
+        host: <SONAR_HOST_URL>
+        token: ${{ secrets.SONAR_TOKEN }}
+
+    # Notifica os membros da equipe sobre o status da construção (ajuste para seu sistema de notificação)
+    - name: Notificar status da construção
+      
+      if: always()
+      uses: some-notification-action@v1
+      with:
+        status: ${{ job.status }}
+        token: ${{ secrets.NOTIFICATION_TOKEN }}
