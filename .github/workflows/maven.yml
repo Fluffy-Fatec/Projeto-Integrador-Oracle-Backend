@@ -40,6 +40,7 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
 
+
     # Compila o projeto usando o Maven
     - name: Compilar com Maven
       run: mvn -B package --file backend/pom.xml
