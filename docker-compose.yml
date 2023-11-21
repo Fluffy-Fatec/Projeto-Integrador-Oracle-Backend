@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    working_dir: /usr/src/fluffyapp
+    container_name: fluffyapp
+    restart: on-failure
+    env_file: ./.env
+    ports:
+      - "$SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT"
+    volumes:
+      - .m2:/root/.m2
+      - oracle_wallet:/usr/src/fluffyapp/wallet
+    stdin_open: true
+    tty: true
+
+volumes:
+  oracle_wallet:
