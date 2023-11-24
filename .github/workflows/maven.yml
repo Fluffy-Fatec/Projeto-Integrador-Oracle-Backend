@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: FluffyOracle CI
+name: FluffyOracle
 
 # Define os eventos que acionarão a execução deste workflow
 on:
@@ -39,7 +39,6 @@ jobs:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
-
 
     # Compila o projeto usando o Maven
     - name: Compilar com Maven
