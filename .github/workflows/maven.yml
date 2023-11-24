@@ -44,6 +44,7 @@ jobs:
     - name: Compilar com Maven
       run: mvn -B package --file backend/pom.xml
 
+    #teste
     # Executa os testes automatizados
     - name: Executar testes
       run: mvn test --file backend/pom.xml
