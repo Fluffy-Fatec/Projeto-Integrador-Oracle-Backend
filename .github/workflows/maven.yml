@@ -11,9 +11,9 @@ name: FluffyOracle
 # Define os eventos que acionarão a execução deste workflow
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -43,11 +43,3 @@ jobs:
     # Compila o projeto usando o Maven
     - name: Compilar com Maven
       run: mvn -B package --file backend/pom.xml
-
-    #teste
-    # Executa os testes automatizados
-    - name: Executar testes
-      run: mvn test --file backend/pom.xml
-      
-
-

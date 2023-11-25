@@ -17,7 +17,7 @@ public class Stocks {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "stock_id")
-	private Long IdFeedstock;
+	private Long Idstock;
 
 	@Column(name = "stock_item_name", nullable = false)
 	private String name;
@@ -27,4 +27,6 @@ public class Stocks {
 
 	@Column(name = "pc_measurement", nullable = false)
 	private String measurement;
+
+	
 }

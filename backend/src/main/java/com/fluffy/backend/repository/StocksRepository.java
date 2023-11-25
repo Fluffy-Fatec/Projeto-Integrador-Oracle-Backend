@@ -10,6 +10,6 @@ import com.fluffy.backend.entity.Stocks;
 
 public interface StocksRepository extends JpaRepository<Stocks, Long> {
 
-	@Query("SELECT s, so FROM Stocks s LEFT JOIN SupplierStockOffer so ON s.IdFeedstock = so.stocks.IdFeedstock WHERE s.name = :name")
+	@Query("SELECT s, so FROM Stocks s LEFT JOIN SupplierStockOffer so ON s.Idstock = so.stocks.Idstock WHERE s.name = :name")
 	List<Object[]> findStocksAndSupplierStockOfferByName(@Param("name") String name);
 }

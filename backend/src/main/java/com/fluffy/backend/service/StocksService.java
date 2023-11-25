@@ -22,11 +22,9 @@ public class StocksService {
 
 	@Autowired
 	SupplierStockRepository supplierFeedstockRepository;
-	@Autowired
 
-	SupplierStockOfferRepository supplierStockOfferRepository;
 	@Autowired
-	StocksRepository stocksRepository;
+	SupplierStockOfferRepository supplierStockOfferRepository;
 
 	public List<StocksListDTO> getAllFeedstocks() {
 
@@ -37,7 +35,7 @@ public class StocksService {
 
 			SupplierStock supplierFeedstock = supplierFeedstockRepository.findByStocks(feedstock);
 
-			feedstocksDTO.setIdFeedstock(feedstock.getIdFeedstock());
+			feedstocksDTO.setIdFeedstock(feedstock.getIdstock());
 			feedstocksDTO.setName(feedstock.getName());
 			feedstocksDTO.setAmountAvailable(feedstock.getAmountAvailable());
 			feedstocksDTO.setMeasurement(feedstock.getMeasurement());
@@ -56,7 +54,19 @@ public class StocksService {
 	}
 
 	public Stocks createStock(Stocks newStock) {
-		return stocksRepository.save(newStock);
+		return feedstocksRepository.save(newStock);
 	}
 
+	public void deleteStockById(Long stockId) {
+		feedstocksRepository.deleteById(stockId);
+	}
+	public List<Stocks> getAllStocks() {
+        return feedstocksRepository.findAll();
+    }
 }
+
+
+
+
+
+

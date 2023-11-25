@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,11 +30,10 @@ public class StocksController {
 	@Autowired
 	private StocksService stocksService;
 
-	@GetMapping
-	public List<StocksListDTO> listAllFeedstocks() {
-		return feedstocksService.getAllFeedstocks();
-	}
-
+	 @GetMapping()
+	    public List<Stocks> getAllStocks() {
+	        return stocksService.getAllStocks();
+	    }
 	@GetMapping("/StockOffer")
 	public List<SupplierStockOffer> listAllSupplierStockOffer() {
 		return feedstocksService.getAllSupplierStockOffer();
@@ -60,4 +60,8 @@ public class StocksController {
 		return ResponseEntity.ok(createdStock);
 	}
 
+	@DeleteMapping("/{Id}")
+    public void deleteStock(@PathVariable Long stockId) {
+        stocksService.deleteStockById(stockId);
+    }
 }
