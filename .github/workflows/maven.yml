@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: FluffyOracle CI
+name: FluffyOracle
 
 # Define os eventos que acionarão a execução deste workflow
 on:
@@ -43,8 +43,3 @@ jobs:
     # Compila o projeto usando o Maven
     - name: Compilar com Maven
       run: mvn -B package --file backend/pom.xml
-
-    # Executa os testes automatizados
-    - name: Executar testes
-      run: mvn test --file backend/pom.xml
-      
