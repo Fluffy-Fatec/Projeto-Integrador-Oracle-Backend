@@ -354,13 +354,15 @@
 			startValue="1" incrementBy="1" />
 	</changeSet>
 
-	<changeSet id="createSupplierFeedstockSeq" author="luiz_borges">
-		<createSequence sequenceName="Supplier_Feedstock_SEQ" startValue="1"
+	<!-- Sequência: Supplier_Stock_SEQ -->
+	<changeSet id="createSupplierStockSeq" author="luiz_borges">
+		<createSequence sequenceName="Supplier_Stock_SEQ" startValue="1"
 			incrementBy="1" />
 	</changeSet>
 
-	<changeSet id="createFeedstockProductSeq" author="luiz_borges">
-		<createSequence sequenceName="Feedstock_Product_SEQ" startValue="1"
+	<!-- Sequência: Stock_Product_SEQ -->
+	<changeSet id="createStockProductSeq" author="luiz_borges">
+		<createSequence sequenceName="Stock_Product_SEQ" startValue="1"
 			incrementBy="1" />
 	</changeSet>
 
