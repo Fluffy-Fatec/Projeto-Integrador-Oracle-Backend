@@ -364,5 +364,11 @@
 			incrementBy="1" />
 	</changeSet>
 
+	<!-- Sequência: Stock_Product_SEQ -->
+	<changeSet id="createNotificationStockSeq" author="luiz_borges">
+		<createSequence sequenceName="Notification_Stock_SEQ" startValue="1"
+			incrementBy="1" />
+	</changeSet>
+
 
 </databaseChangeLog>

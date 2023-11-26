@@ -25,29 +25,53 @@ public class CsvService {
 	private ProductCommandRepository productCommandRepository;
 
 	public void processCsvData(List<CsvData> csvDataList) {
-		for (CsvData csvData : csvDataList) {
+	    for (CsvData csvData : csvDataList) {
+	        Product existingProduct = productRepository.findByName(csvData.getProductName());
 
-			Product product = new Product();
-			product.setName(csvData.getProductName());
-			product.setValue(csvData.getProductValue());
-			product.setType(csvData.getProductType());
-			product.setStatus(csvData.getStatus());
-			productRepository.saveAndFlush(product);
+	        if (existingProduct == null) {
+	            // O produto não existe, pode ser adicionado
+	            Product product = new Product();
+	            product.setName(csvData.getProductName());
+	            product.setValue(csvData.getProductValue());
+	            product.setType(csvData.getProductType());
+	            product.setStatus(csvData.getStatus());
+	            productRepository.saveAndFlush(product);
 
-			Command command = new Command();
-			command.setCommandNumber(csvData.getCommandNumber());
-			command.setCommandDateTime(csvData.getCommandDateTime());
-			command.setCommandValue(csvData.getCommandValue());
-			commandRepository.saveAndFlush(command);
+	            // Salvar apenas se o produto não existe
+	            Command command = new Command();
+	            command.setCommandNumber(csvData.getCommandNumber());
+	            command.setCommandDateTime(csvData.getCommandDateTime());
+	            command.setCommandValue(csvData.getCommandValue());
+	            commandRepository.saveAndFlush(command);
 
-			ProductCommand productCommand = new ProductCommand();
-			productCommand.setProduct(product);
-			productCommand.setCommand(command);
-			productCommand.setPcQuantity(csvData.getPcQuantity());
-			productCommand.setPcMeasurement(csvData.getPcMeasurement());
-			//productCommand.set(csvData.getPcTurn());
-			productCommand.setPcDatetimeOrder(csvData.getPcDatetimeOrder());
-			productCommandRepository.saveAndFlush(productCommand);
-		}
+	            ProductCommand productCommand = new ProductCommand();
+	            productCommand.setProduct(product);
+	            productCommand.setCommand(command);
+	            productCommand.setPcQuantity(csvData.getPcQuantity());
+	            productCommand.setPcMeasurement(csvData.getPcMeasurement());
+	            // productCommand.set(csvData.getPcTurn());
+	            productCommand.setPcDatetimeOrder(csvData.getPcDatetimeOrder());
+	            productCommandRepository.saveAndFlush(productCommand);
+
+	        } else {
+	            // O produto já existe, pode adicionar apenas Command e ProductCommand
+	            Command command = new Command();
+	            command.setCommandNumber(csvData.getCommandNumber());
+	            command.setCommandDateTime(csvData.getCommandDateTime());
+	            command.setCommandValue(csvData.getCommandValue());
+	            commandRepository.saveAndFlush(command);
+
+	            ProductCommand productCommand = new ProductCommand();
+	            productCommand.setProduct(existingProduct);  // Usar o produto existente
+	            productCommand.setCommand(command);
+	            productCommand.setPcQuantity(csvData.getPcQuantity());
+	            productCommand.setPcMeasurement(csvData.getPcMeasurement());
+	            // productCommand.set(csvData.getPcTurn());
+	            productCommand.setPcDatetimeOrder(csvData.getPcDatetimeOrder());
+	            productCommandRepository.saveAndFlush(productCommand);
+
+	            System.out.println("Produto já existe: " + csvData.getProductName());
+	        }
+	    }
 	}
 }
