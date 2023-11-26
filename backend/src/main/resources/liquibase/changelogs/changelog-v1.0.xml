@@ -6,6 +6,18 @@
 	<!--<include file="liquibase/changelog/initial_schema.xml" relativeToChangelogFile="false"/>-->
 
 	<!-- Create Table COMMANDS -->
+	<changeSet id="createTableNotificationStock" author="victor_fernandes">
+		<createTable tableName="NOTIFICATION_STOCK">
+			<column name="NS_ID" type="INTEGER" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="NS_STATUS" type="VARCHAR(255)" />
+			<column name="NS_DATETIME" type="TIMESTAMP" />
+			<column name="STOCK_ID" type="INTEGER" />
+		</createTable>
+	</changeSet>
+
+	<!-- Create Table COMMANDS -->
 	<changeSet id="createTableCommands" author="luiz_borges">
 		<createTable tableName="COMMANDS">
 			<column name="COMMAND_ID" type="INTEGER" autoIncrement="true">
@@ -290,6 +302,14 @@
 			constraintName="FK_PRODUCT_COMMAND_PRODUCTS" />
 	</changeSet>
 
+	<!-- Add Foreign Key Constraint for NOTIFICATON_STOCK to STOCK -->
+	<changeSet id="addForeignNotificationStock" author="luiz_borges">
+		<addForeignKeyConstraint baseTableName="NOTIFICATION_STOCK"
+			baseColumnNames="STOCK_ID"
+			referencedTableName="STOCK" referencedColumnNames="STOCK_ID"
+			constraintName="FK_PRODUCT_NOTIFICATION_STOCK" />
+	</changeSet>
+
 	<!-- Sequências -->
 
 	<!-- Create Sequence COMMANDS_SEQ -->
@@ -343,6 +363,12 @@
 	<!-- Sequência: Stock_Product_SEQ -->
 	<changeSet id="createStockProductSeq" author="luiz_borges">
 		<createSequence sequenceName="Stock_Product_SEQ" startValue="1"
+			incrementBy="1" />
+	</changeSet>
+
+	<!-- Sequência: Stock_Product_SEQ -->
+	<changeSet id="createNotificationStockSeq" author="luiz_borges">
+		<createSequence sequenceName="Notification_Stock_SEQ" startValue="1"
 			incrementBy="1" />
 	</changeSet>
 
