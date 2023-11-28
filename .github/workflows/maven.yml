@@ -32,7 +32,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    # Armazena em cache as dependências do Maven para acelerar as construções subsequentes
+    # Armazena em cache as dependências do Maven para acelerar as construções subsequentes teste
     - name: Cache de pacotes Maven
       uses: actions/cache@v2
       with:
